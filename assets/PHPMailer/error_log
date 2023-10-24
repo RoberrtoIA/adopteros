@@ -1,0 +1,2 @@
+[31-Oct-2022 20:07:40 America/Argentina/Buenos_Aires] PHP Fatal error:  Interface 'PHPMailer\PHPMailer\OAuthTokenProvider' not found in /home/adoptero/public_html/assets/PHPMailer/OAuth.php on line 37
+[19-Nov-2022 09:11:25 America/Argentina/Buenos_Aires] PHP Fatal error:  Interface 'PHPMailer\PHPMailer\OAuthTokenProvider' not found in /home/adoptero/public_html/assets/PHPMailer/OAuth.php on line 37
