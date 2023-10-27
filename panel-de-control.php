@@ -140,33 +140,40 @@ require_once('assets/Model/usuario.php');
             <ul class="nav nav-tabs row d-flex">
 
                <!-- 1. ADMIN, EDITOR / Gestión - Perros en adopción -->
-               <li class="nav-item col-4">
-                  <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#gestion_perros_adopcion">
+               <li class="nav-item col-3">
+                  <a class="nav-link active show" id="a1" data-bs-toggle="tab" data-bs-target="#gestion_perros_adopcion">
                      <h4 class="d-none d-lg-block">Gestión de Perros en adopción</h4>
                   </a>
                </li>
 
                <!-- 2. ADMIN / Gestión - Usuarios -->
                <?php if ($_SESSION['auth'] == 1) { ?>
-                  <li class="nav-item col-4">
-                     <a class="nav-link" data-bs-toggle="tab" data-bs-target="#gestion_usuarios">
+                  <li class="nav-item col-3">
+                     <a class="nav-link" id="a2" data-bs-toggle="tab" data-bs-target="#gestion_usuarios">
                         <h4 class="d-none d-lg-block">Gestión de Usuarios</h4>
                      </a>
                   </li>
                <?php } else { ?>
 
                   <!-- 3. EDITOR / Gestión - Cuenta -->
-                  <li class="nav-item col-4">
-                     <a class="nav-link" data-bs-toggle="tab" data-bs-target="#gestion_cuenta">
+                  <li class="nav-item col-3">
+                     <a class="nav-link" id="a3" data-bs-toggle="tab" data-bs-target="#gestion_cuenta">
                         <h4 class="d-none d-lg-block">Gestión de Cuenta</h4>
                      </a>
                   </li>
                <?php } ?>
 
                <!-- 4. ADMIN, EDITOR / PDF - Guía de usuario -->
-               <li class="nav-item col-4">
-                  <a class="nav-link" data-bs-toggle="tab" data-bs-target="#guia_usuario">
+               <li class="nav-item col-3">
+                  <a class="nav-link" id="a4" data-bs-toggle="tab" data-bs-target="#guia_usuario">
                      <h4 class="d-none d-lg-block">Guía de Usuario</h4>
+                  </a>
+               </li>
+
+               <!-- 5. ADMIN Gestión de Donaciones -->
+               <li class="nav-item col-3">
+                  <a class="nav-link" id="a5" data-bs-toggle="tab" data-bs-target="#gestion_donacion">
+                     <h4 class="d-none d-lg-block">Gestión de Donaciones</h4>
                   </a>
                </li>
             </ul>
@@ -437,8 +444,97 @@ require_once('assets/Model/usuario.php');
                <!-- 4. ADMIN, EDITOR / PDF - Guía de usuario -->
                <div class="tab-pane" id="guia_usuario">
                   <div class="container" style="padding-top: 40px; padding-bottom: 20px;">
-                     <iframe src="assets/Guia-de-Usuario.pdf" width="100%" height="500px">
+                     <iframe src="assets/Guia-de-Usuario.pdf" width="100%" height="900px">
                      </iframe>
+                  </div>
+               </div>
+
+               <!-- 5. ADMIN / Gestion de Donaciones -->
+
+               <div class="tab-pane" id="gestion_donacion">
+                  <div class="container" style="padding-top: 40px; padding-bottom: 20px;">
+
+                     <!-- GESTIÓN DE USUARIOS AQUÍ -->
+
+                     <!-- Registro de usuarios -->
+                     <form class="shadow p-3 mb-5 bg-white rounded" action="" method="POST" style="padding: 30px 30px;">
+                        <h5 style="margin-top:-16px; margin-left: -16px; margin-right: -16px;
+                              padding-bottom:15px; padding-top: 15px; padding-left:30px; 
+                              background-color: #1b1b1b; color:white;">
+                           Agregar donación
+                        </h5>
+                        <br>
+                        <div class="row" style="padding-left: 30px">
+                           <div class="col-xl-3 mb-3">
+                              <label style="padding-bottom: 10px;">Usuario:</label>
+                              <input type="text" name="txt_username" class="form-control text-center" placeholder="Nombre de usuario..." maxlength="16">
+                           </div>
+                           <div class="col-xl-3 mb-3">
+                              <label style="padding-bottom: 10px;">Password:</label>
+                              <input type="password" name="txt_password" class="form-control text-center" placeholder="Contraseña de usuario..." maxlength="16">
+                           </div>
+                           <div class="col-xl-3 mb-3">
+                              <label style="padding-bottom: 10px;">Grupo:</label>
+                              <select class="form-control text-center" type="input" name="select_group">
+                                 <option value="1">Administrador</option>
+                                 <option value="0">Editor</option>
+                              </select>
+                           </div>
+                           <div class="col-xl-3 mb-3">
+                              <button type="submit" name="btn_registrar_usuario" class="btn login-btn" style="margin-top: 32px;">
+                                 Guardar usuario
+                              </button><br>
+                           </div>
+                        </div>
+                     </form>
+
+                     <!-- Vista de usuarios -->
+                     <form class="shadow p-3 mb-5 bg-white rounded" action="" method="POST" style="padding: 30px 30px;">
+                        <h5 style="margin-top:-16px; margin-left: -16px; margin-right: -16px;
+                              padding-bottom:15px; padding-top: 15px; padding-left:30px; 
+                              background-color: #1b1b1b; color:white;">
+                           Cuentas de usuario
+                        </h5>
+                        <br>
+                        <table class="table table-striped table-bordered" style="text-align: center;">
+                           <thead>
+                              <tr>
+                                 <th>ID</th>
+                                 <th>Usuario</th>
+                                 <th>Grupo</th>
+                                 <th>Acciones</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+
+                              <?php
+                              $Usuarios  = Usuario::Get();
+                              foreach ($Usuarios as $usuario) {
+                              ?>
+
+                                 <tr>
+                                    <td style="vertical-align: middle;"><?php echo $usuario->id ?></td>
+                                    <td style="vertical-align: middle;"><?php echo $usuario->username ?></td>
+                                    <td style="vertical-align: middle;"><?php
+                                                                        if ($usuario->auth == 1) {
+                                                                           echo "Administrador";
+                                                                        } else {
+                                                                           echo "Editor";
+                                                                        }
+                                                                        ?></td>
+                                    <td style="vertical-align: middle;">
+                                       <div class="btn-group" role="group" aria-label="">
+                                          <a href="EditUser.php?id=<?php echo $usuario->id; ?>" type="button" name="btn-" class="btn btn-outline-success">Editar</a>
+                                          <a href="assets/vendor/php/panel_de_control_usuario.php?action=borrarU&id=<?php echo $usuario->id; ?>" type="submit" class="btn btn-outline-danger" name="btnBorrar">Borrar</a>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              <?php } ?>
+
+                           </tbody>
+                        </table>
+                     </form>
+
                   </div>
                </div>
             </div>
@@ -481,7 +577,7 @@ require_once('assets/Model/usuario.php');
                   Registro de mascotas
                   <button type="button" class="btn btn-danger offset-8" data-bs-dismiss="modal">X</button>
                </h5>
-               
+
                <br>
                <div class="row" style="padding-left: 30px">
                   <div class="col-xl-3 mb-3">
@@ -518,6 +614,39 @@ require_once('assets/Model/usuario.php');
    <script src="assets/js/button.js"></script>
 
    <!-- Vendor JS Files -->
+
+   <script>
+      function activarTab(id, exceptuarId) {
+         // Obtener el elemento tab con el id especificado
+         var tab = document.querySelector("#" + id);
+
+         // Activar el tab
+         tab.classList.add("active");
+
+         // Ocultar todos los demás tabs, excepto el tab con el id especificado
+         var tabs = document.querySelectorAll(".tab-pane");
+
+         // document.getElementById("a1").classList.remove("active")
+         document.getElementById("a1").classList.add("active")
+         document.getElementById("a2").classList.remove("active")
+         // document.getElementById("a3").classList.remove("active")
+         // document.getElementById("a4").classList.remove("active")
+         document.getElementById("a5").classList.remove("active")
+
+
+         for (var i = 0; i < tabs.length; i++) {
+            // alert(tabs.length);
+            if (tabs[i] !== tab && tabs[i].id !== exceptuarId) {
+               tabs[i].classList.remove("active");
+            }
+         }
+      }
+
+      document.getElementById("my-button").addEventListener("click", function() {
+         activarTab("gestion_perros_adopcion", "gestion_donacion");
+         // activarTab("gestion_donacion", "gestion_perros_adopcion");
+      }, false);
+   </script>
    <script src="assets/vendor/aos/aos.js"></script>
    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
