@@ -57,6 +57,28 @@ class Perro
     {
         $perros = [];
         $conexion = DB::CrearInstancia();
+        $sql = $conexion->query("SELECT * FROM perro WHERE adoptado = 0");
+
+        foreach ($sql->fetchAll() as $perro) {
+            $perros[] = new Perro(
+                $perro["id"],
+                $perro["nombre"],
+                $perro["edad"],
+                $perro["edad_meses"],
+                $perro["descripcion"],
+                $perro["uid_fotografia"],
+                $perro["adoptado"]
+            );
+        }
+
+        $conexion = null;
+        return $perros;
+    }
+
+    public static function All()
+    {
+        $perros = [];
+        $conexion = DB::CrearInstancia();
         $sql = $conexion->query("SELECT * FROM perro");
 
         foreach ($sql->fetchAll() as $perro) {

@@ -20,6 +20,7 @@ require_once('assets/Model/usuario.php');
 
    <!-- Vendor Files -->
    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+   <link href="assets/css/button.css" rel="stylesheet">
    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
@@ -180,7 +181,7 @@ require_once('assets/Model/usuario.php');
                      <!-- GESTIÓN DE PERROS AQUÍ -->
 
                      <!-- Registro de perritos -->
-                     <form class="shadow p-3 mb-5 bg-white rounded" action="" method="POST" style="padding: 30px 30px;" enctype="multipart/form-data">
+                     <!-- <form class="shadow p-3 mb-5 bg-white rounded" action="" method="POST" style="padding: 30px 30px;" enctype="multipart/form-data">
                         <h5 style="margin-top:-16px; margin-left: -16px; margin-right: -16px;
                               padding-bottom:15px; padding-top: 15px; padding-left:30px; 
                               background-color: #1b1b1b; color:white;">
@@ -214,7 +215,7 @@ require_once('assets/Model/usuario.php');
                               </button><br>
                            </div>
                         </div>
-                     </form>
+                     </form> -->
 
                      <!--vista de perros-->
                      <form class="shadow p-3 mb-5 bg-white rounded" action="" method="POST" style="padding: 30px 30px;">
@@ -249,7 +250,7 @@ require_once('assets/Model/usuario.php');
                            <tbody>
 
                               <?php
-                              $tabla = Perro::Get();
+                              $tabla = Perro::All();
                               foreach ($tabla as $row => $item) {
                               ?>
 
@@ -460,6 +461,61 @@ require_once('assets/Model/usuario.php');
    <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
       <i class="bi bi-arrow-up-short"></i>
    </a>
+
+   <!-- Add Dog -->
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <div class="floating-container">
+      <div class="floating-button" id="my-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</div>
+   </div>
+
+
+
+   <!-- Modal -->
+   <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+         <div class="modal-content">
+            <form class="shadow p-3 mb-5 bg-white rounded" action="" method="POST" style="padding: 30px 30px;" enctype="multipart/form-data">
+               <h5 style="margin-top:-16px; margin-left: -16px; margin-right: -16px;
+                              padding-bottom:15px; padding-top: 15px; padding-left:30px; 
+                              background-color: #1b1b1b; color:white;">
+                  Registro de mascotas
+                  <button type="button" class="btn btn-danger offset-8" data-bs-dismiss="modal">X</button>
+               </h5>
+               
+               <br>
+               <div class="row" style="padding-left: 30px">
+                  <div class="col-xl-3 mb-3">
+                     <label style="padding-bottom: 10px;">Nombre:</label>
+                     <input type="text" maxlength="24" name="txt_name" class="form-control text-center" placeholder="Nombre de perro...">
+                  </div>
+                  <div class="col-xl-2 mb-3">
+                     <label style="padding-bottom: 10px;">Años:</label>
+                     <input type="number" min="0" max="30" name="txt_edad" class="form-control text-center" placeholder="0">
+                  </div>
+                  <div class="col-xl-2 mb-3">
+                     <label style="padding-bottom: 10px;">Meses:</label>
+                     <input type="number" min="0" max="11" name="txt_edad_meses" class="form-control text-center" placeholder="0">
+                  </div>
+                  <div class="col-xl-3 mb-3">
+                     <label style="padding-bottom: 14px;">Fotografía:</label>
+                     <input type="file" class="form-control-file" name="photo">
+                  </div>
+                  <div class="form-group">
+                     <label class=" mb-3" for="description">Descripción:</label>
+                     <textarea class="form-control" name="description" maxlength="400" rows="3"></textarea>
+                  </div>
+                  <div class="col-xl-3 mb-3">
+                     <button type="submit" name="btn_registrar" class="btn login-btn" value="savepupie" style="margin-top: 32px;">
+                        Guardar mascota
+                     </button><br>
+                  </div>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
+
+   <script src="assets/js/button.js"></script>
 
    <!-- Vendor JS Files -->
    <script src="assets/vendor/aos/aos.js"></script>
