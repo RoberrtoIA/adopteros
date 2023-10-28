@@ -1,3 +1,8 @@
+<?php
+require_once('assets/Model/donacion.php');
+require_once('assets/vendor/php/panel_de_control_crud_donaciones.php');
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -8,9 +13,7 @@
    <link href="assets/img/icon.png" rel="icon">
 
    <!-- Google Fonts -->
-   <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-      rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
    <!-- Vendor Files -->
    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
@@ -37,8 +40,7 @@
                <li><a class="nav-link scrollto" href="inicio.html">Inicio</a></li>
                <li><a class="nav-link scrollto" href="inicio.html #acerca-de">Acerca de</a></li>
                <li class="dropdown">
-                  <a class="nav-link scrollto" href="inicio.html #adopcion"> <span>Adopción y cuidado</span><i
-                        class="bi bi-chevron-down"></i></a>
+                  <a class="nav-link scrollto" href="inicio.html #adopcion"> <span>Adopción y cuidado</span><i class="bi bi-chevron-down"></i></a>
                   <ul>
                      <li><a class="nav-link scrollto" href="inicio.html #requisitos">Requisitos para adoptar</a></li>
                      <li><a class="nav-link scrollto" href="inicio.html #contribuir">¿Cómo contribuir?</a></li>
@@ -49,7 +51,7 @@
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
          </nav>
-         <a href="donar.html" class="get-started-btn">Donar</a>
+         <a href="donar.php" class="get-started-btn">Donar</a>
       </div>
    </header>
 
@@ -93,8 +95,7 @@
                            <br> A nombre de LARA IRENE VADRA,DNI 39627066
                         </p>
                      </div>
-                     <div class="col-lg-6 order-1 order-lg-2 text-center" data-aos="fade-up" data-aos-delay="200"> <img
-                           src="assets/img/img-4.jpg" class="img-fluid rounded"> </div>
+                     <div class="col-lg-6 order-1 order-lg-2 text-center" data-aos="fade-up" data-aos-delay="200"> <img src="assets/img/img-4.jpg" class="img-fluid rounded"> </div>
                   </div>
                </div>
             </div>
@@ -112,20 +113,61 @@
 
             <div class="row" data-aos="fade-up" data-aos-delay="100" style="margin-top:-30px;">
                <div class="col-md-12">
-                  
+
                   <section id="carousel" class="splide" aria-labelledby="carousel-heading">
                      <!-- <h2 id="carousel-heading">Splide Basic HTML Example</h2> -->
 
+
                      <div class="splide__track">
                         <ul class="splide__list" data-aos="fade-up" data-aos-delay="100">
-                           <li class="splide__slide" style="padding-right:20px;;">
 
-                              <div class="icon-box text-center" style="padding-bottom: 25px;">   
+                        <?php
+                           $donaciones = Donacion::All();
+
+                           $c = 4;
+                           $v = 2;
+                           foreach ($donaciones as $key => $donacion) {
+                              
+                              if ($c % 4 == 0) {
+                                 echo "<li class=\"splide__slide\" style=\"padding-right:20px;\">";
+                              }
+
+                              if ($v % 2 == 0) {
+                                 echo "<li class=\"splide__slide\" data-aos=\"fade-up\" data-aos-delay=\"100\">";
+                              }
+                              echo "<div class=\"icon-box text-center\" style=\"padding-bottom: 25px;\">";
+                              echo "<a href=\"". $donacion->url ."\" target=\"_blank\">";
+                              echo "<img src=\"assets/img/donacion-img.png\" style=\"width: 500px;\">";
+                              echo "<span style=\"position: absolute; top: 25%; left: 50%; transform: translate(-50%, 50%);\">";
+                              echo "<h2 style=\"font-size: 2.5rem; color: #f3f3f1;\"><b><big>". $donacion->monto ."</big></b></h2>";
+                              echo "</span>";
+                              echo "</a>";
+                              echo "</div>";
+
+                              $c++;
+                              $v++;
+                           }
+
+                           // for ($i = 4; $i < count($donaciones) + 4; $i++) {
+                           //    if ($i % 4 == 0) {
+                           //       echo "<li class=\"splide__slide\" style=\"padding-right:20px;\">";
+                           //    }
+                           //    echo "<div class=\"icon-box text-center\" style=\"padding-bottom: 25px;\">";
+                           //    echo "<a href=\"http://mpago.la/wtgh\" target=\"_blank\">";
+                           // }
+                        
+                        ?>
+
+                           <li class="splide__slide" style="padding-right:20px;">
+                              <div class="icon-box text-center" style="padding-bottom: 25px;">
                                  <a href="http://mpago.la/wtgh" target="_blank">
-                                    <img src="assets/img/b_debito.jpg" style="width: 500px;">
+                                    <img src="assets/img/donacion-img.png" style="width: 500px;">
+                                    <span style="position: absolute; top: 25%; left: 50%; transform: translate(-50%, -50%);">
+                                       <h2 style="font-size: 2.5rem; color: #f3f3f1;"><b><big>100$</big></b></h2>
+                                    </span>
                                  </a>
                               </div>
-                              <div class="icon-box text-center" style="padding-bottom: 25px;">   
+                              <div class="icon-box text-center" style="padding-bottom: 25px;">
                                  <a href="http://mpago.la/1tFKQ6p" target="_blank">
                                     <img src="assets/img/b_100.jpg" style="width: 500px;">
                                  </a>
@@ -267,7 +309,7 @@
                   <h4>Enlaces de utilidad</h4>
                   <ul>
                      <li> <i class="bx bx-chevron-right"></i> <a href="inicio.html">Inicio</a> </li>
-                     <i class="bx bx-chevron-right"></i> <a href="donar.html">Donar</a>
+                     <i class="bx bx-chevron-right"></i> <a href="donar.php">Donar</a>
                      <li> <i class="bx bx-chevron-right"></i> <a href="perros-en-adopcion.php">Perros en adopción</a>
                      </li>
                      <i class="bx bx-chevron-right"></i> <a href="contacto.php">Contacto</a>
@@ -276,9 +318,7 @@
 
                <!-- Mapa -->
                <div class="col-lg-6 col-md-6 footer-newsletter">
-                  <iframe
-                     src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13138.54569057835!2d-58.3970969!3d-34.5880651!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xafc4c06da4f0d167!2sAdopteros%20Argentina!5e0!3m2!1sen!2sjp!4v1631593222641!5m2!1sen!2sjp"
-                     width="120%" height="160" style="border: 0" allowfullscreen="" loading="lazy"></iframe>
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13138.54569057835!2d-58.3970969!3d-34.5880651!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xafc4c06da4f0d167!2sAdopteros%20Argentina!5e0!3m2!1sen!2sjp!4v1631593222641!5m2!1sen!2sjp" width="120%" height="160" style="border: 0" allowfullscreen="" loading="lazy"></iframe>
                </div>
             </div>
          </div>
@@ -291,14 +331,11 @@
                      Argentina</span></strong>. 2022 All Rights Reserved </div>
          </div>
          <div class="social-links text-center text-md-end pt-3 pt-md-0">
-            <a href="https://www.instagram.com/adopterosargentina/" class="instagram" target="_blank"> <i
-                  class="bx bxl-instagram"></i> </a>
+            <a href="https://www.instagram.com/adopterosargentina/" class="instagram" target="_blank"> <i class="bx bxl-instagram"></i> </a>
             <a href="https://twitter.com/adopteros_arg/" class="twitter" target="_blank"> <i class="bx bxl-twitter"></i>
             </a>
-            <a href="https://www.facebook.com/AdopterosArgentina/" class="facebook" target="_blank"> <i
-                  class="bx bxl-facebook"></i> </a>
-            <a href="https://www.youtube.com/channel/UCwjWHlJzbmYaIG6NLt2eTpQ/" class="youtube" target="_blank"> <i
-                  class="bx bxl-youtube"></i> </a>
+            <a href="https://www.facebook.com/AdopterosArgentina/" class="facebook" target="_blank"> <i class="bx bxl-facebook"></i> </a>
+            <a href="https://www.youtube.com/channel/UCwjWHlJzbmYaIG6NLt2eTpQ/" class="youtube" target="_blank"> <i class="bx bxl-youtube"></i> </a>
          </div>
       </div>
    </footer>
@@ -320,18 +357,17 @@
 
    <script>
       //configurar carousel de donaciones
-      document.addEventListener( 'DOMContentLoaded', function () {
-         new Splide( '#carousel', {
-               autoplay: true,
-               perPage    : 2,
-               breakpoints: {
-                  640: {
-                     perPage: 1,
-                  },
+      document.addEventListener('DOMContentLoaded', function() {
+         new Splide('#carousel', {
+            autoplay: true,
+            perPage: 2,
+            breakpoints: {
+               640: {
+                  perPage: 1,
                },
-         } ).mount();
-      } );
-
+            },
+         }).mount();
+      });
    </script>
 </body>
 

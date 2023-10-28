@@ -1,4 +1,3 @@
-alert('hola');
 
 function activarTab() {
   // Obtener el elemento tab con el id especificado

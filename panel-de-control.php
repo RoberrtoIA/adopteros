@@ -569,7 +569,7 @@ require_once('assets/Model/usuario.php');
    <!-- Modal -->
    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg modal-dialog-centered">
-         <div class="modal-content">
+         <div class="modal-content" style="height: 80px; margin-bottom: 40%;">
             <form class="shadow p-3 mb-5 bg-white rounded" action="" method="POST" style="padding: 30px 30px;" enctype="multipart/form-data">
                <h5 style="margin-top:-16px; margin-left: -16px; margin-right: -16px;
                               padding-bottom:15px; padding-top: 15px; padding-left:30px; 
@@ -629,13 +629,19 @@ require_once('assets/Model/usuario.php');
          // document.getElementById("a1").classList.remove("active")
          document.getElementById("a1").classList.add("active")
          document.getElementById("a2").classList.remove("active")
+
+
+         <?php if ($_SESSION['auth'] == 1) {
+            echo "document.getElementById(\"a2\").classList.remove(\"active\");";
+         } else {
+            echo "document.getElementById(\"a3\").classList.remove(\"active\");";
+         } ?>
          // document.getElementById("a3").classList.remove("active")
-         // document.getElementById("a4").classList.remove("active")
+         document.getElementById("a4").classList.remove("active")
          document.getElementById("a5").classList.remove("active")
 
 
          for (var i = 0; i < tabs.length; i++) {
-            // alert(tabs.length);
             if (tabs[i] !== tab && tabs[i].id !== exceptuarId) {
                tabs[i].classList.remove("active");
             }
@@ -643,7 +649,7 @@ require_once('assets/Model/usuario.php');
       }
 
       document.getElementById("my-button").addEventListener("click", function() {
-         activarTab("gestion_perros_adopcion", "gestion_donacion");
+         activarTab("gestion_perros_adopcion", "");
          // activarTab("gestion_donacion", "gestion_perros_adopcion");
       }, false);
    </script>

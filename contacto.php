@@ -47,7 +47,7 @@
                </ul>
                <i class="bi bi-list mobile-nav-toggle"></i> 
             </nav>
-            <a href="donar.html" class="get-started-btn">Donar</a> 
+            <a href="donar.php" class="get-started-btn">Donar</a> 
          </div>
       </header>
 
@@ -118,7 +118,7 @@
                      <h4>Enlaces de utilidad</h4>
                      <ul>
                         <li><i class="bx bx-chevron-right"></i> <a href="inicio.html">Inicio</a></li>
-                        <i class="bx bx-chevron-right"></i> <a href="donar.html">Donar</a>
+                        <i class="bx bx-chevron-right"></i> <a href="donar.php">Donar</a>
                         <li><i class="bx bx-chevron-right"></i> <a href="perros-en-adopcion.php">Perros en adopción</a></li>
                         <i class="bx bx-chevron-right"></i> <a href="contacto.php">Contacto</a> 
                      </ul>
