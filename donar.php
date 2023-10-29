@@ -25,6 +25,13 @@ require_once('assets/vendor/php/panel_de_control_crud_donaciones.php');
    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
    <link href="assets/css/style.css" rel="stylesheet">
    <link rel="stylesheet" href="assets/vendor/splide-4.0.2/dist/css/splide.min.css">
+   <link rel="stylesheet" href="assets/css/carousel.css">
+   <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script> -->
 </head>
 
 <body>
@@ -117,46 +124,12 @@ require_once('assets/vendor/php/panel_de_control_crud_donaciones.php');
                   <section id="carousel" class="splide" aria-labelledby="carousel-heading">
                      <!-- <h2 id="carousel-heading">Splide Basic HTML Example</h2> -->
 
-
+                     <?php
+                     $donaciones = Donacion::All();
+                     ?>
                      <div class="splide__track">
                         <ul class="splide__list" data-aos="fade-up" data-aos-delay="100">
 
-                        <?php
-                           $donaciones = Donacion::All();
-
-                           $c = 4;
-                           $v = 2;
-                           foreach ($donaciones as $key => $donacion) {
-                              
-                              if ($c % 4 == 0) {
-                                 echo "<li class=\"splide__slide\" style=\"padding-right:20px;\">";
-                              }
-
-                              if ($v % 2 == 0) {
-                                 echo "<li class=\"splide__slide\" data-aos=\"fade-up\" data-aos-delay=\"100\">";
-                              }
-                              echo "<div class=\"icon-box text-center\" style=\"padding-bottom: 25px;\">";
-                              echo "<a href=\"". $donacion->url ."\" target=\"_blank\">";
-                              echo "<img src=\"assets/img/donacion-img.png\" style=\"width: 500px;\">";
-                              echo "<span style=\"position: absolute; top: 25%; left: 50%; transform: translate(-50%, 50%);\">";
-                              echo "<h2 style=\"font-size: 2.5rem; color: #f3f3f1;\"><b><big>". $donacion->monto ."</big></b></h2>";
-                              echo "</span>";
-                              echo "</a>";
-                              echo "</div>";
-
-                              $c++;
-                              $v++;
-                           }
-
-                           // for ($i = 4; $i < count($donaciones) + 4; $i++) {
-                           //    if ($i % 4 == 0) {
-                           //       echo "<li class=\"splide__slide\" style=\"padding-right:20px;\">";
-                           //    }
-                           //    echo "<div class=\"icon-box text-center\" style=\"padding-bottom: 25px;\">";
-                           //    echo "<a href=\"http://mpago.la/wtgh\" target=\"_blank\">";
-                           // }
-                        
-                        ?>
 
                            <li class="splide__slide" style="padding-right:20px;">
                               <div class="icon-box text-center" style="padding-bottom: 25px;">
@@ -189,8 +162,11 @@ require_once('assets/vendor/php/panel_de_control_crud_donaciones.php');
 
                            <li class="splide__slide" style="padding-right:20px;" data-aos="fade-up" data-aos-delay="100">
                               <div class="icon-box text-center" style="padding-bottom: 25px;">
-                                 <a href="http://mpago.la/2G3hzS" target="_blank">
-                                    <img src="assets/img/b_250.jpg" style="width: 500px;">
+                                 <a href="http://mpago.la/wtgh" target="_blank">
+                                    <img src="assets/img/donacion-img.png" style="width: 500px;">
+                                    <span style="position: absolute; top: 25%; left: 50%; transform: translate(-50%, -50%);">
+                                       <h2 style="font-size: 2.5rem; color: #f3f3f1;"><b><big>100$</big></b></h2>
+                                    </span>
                                  </a>
                               </div>
 
@@ -216,8 +192,11 @@ require_once('assets/vendor/php/panel_de_control_crud_donaciones.php');
 
                            <li class="splide__slide" style="padding-right:20px;" data-aos="fade-up" data-aos-delay="100">
                               <div class="icon-box text-center" style="padding-bottom: 25px;">
-                                 <a href="http://mpago.la/1zmxxEq" target="_blank">
-                                    <img src="assets/img/b_600.jpg" style="width: 500px;">
+                                 <a href="http://mpago.la/wtgh" target="_blank">
+                                    <img src="assets/img/donacion-img.png" style="width: 500px;">
+                                    <span style="position: absolute; top: 25%; left: 50%; transform: translate(-50%, -50%);">
+                                       <h2 style="font-size: 2.5rem; color: #f3f3f1;"><b><big>100$</big></b></h2>
+                                    </span>
                                  </a>
                               </div>
 

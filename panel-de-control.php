@@ -278,11 +278,11 @@ require_once('assets/Model/usuario.php');
                                     <?php
                                     // echo "<td style=\"vertical-align: middle;\">";
                                     if ($item->adoptado == 0) {
-                                       echo "<td style=\"vertical-align: middle; background-color: #ed8291;\">";
-                                       echo "<img src=\"assets/img/dog-no.png\" alt=\"\" height=\"75px\">";
+                                       echo "<td style=\"vertical-align: middle;\">";
+                                       echo "<img src=\"assets/img/x.png\" alt=\"\" height=\"75px\">";
                                     } else {
-                                       echo "<td style=\"vertical-align: middle;  background-color: #8ae69d;\">";
-                                       echo "<img src=\"assets/img/dog-yes.png\" alt=\"\" height=\"75px\">";
+                                       echo "<td style=\"vertical-align: middle;\">";
+                                       echo "<img src=\"assets/img/check-mark.png\" alt=\"\" height=\"75px\">";
                                     }
                                     ?>
                                     </td>
@@ -294,8 +294,16 @@ require_once('assets/Model/usuario.php');
                                     </td>
                                     <td style="vertical-align: middle;">
                                        <div class="btn-group" role="group" aria-label="">
-                                          <a href="assets/vendor/php/panel_de_control_options.php?action=cambiar&id=<?php echo $item->id; ?>" type="submit" class="btn btn-outline-secondary" name="btnBorrar"><?php echo ($item->adoptado == 0) ? "Adoptado" : "Acoger"; ?></a>
-                                          <a href="EditPuppie.php?id=<?php echo $item->id; ?>" type="button" name="btn-" class="btn btn-outline-success">Editar</a>
+                                          <?php
+                                          
+                                          if ($item->adoptado == 0) {
+                                             echo "<a href=\"assets/vendor/php/panel_de_control_options.php?action=cambiar&id=". $item->id. "\" type=\"submit\" class=\"btn btn-outline-success\" name=\"btnBorrar\">✔</a>";
+                                          } else {
+                                             echo "<a href=\"assets/vendor/php/panel_de_control_options.php?action=cambiar&id=". $item->id. "\" type=\"submit\" class=\"btn btn-outline-warning\" name=\"btnBorrar\">X</a>";
+                                          }
+                                          
+                                          ?>
+                                          <a href="EditPuppie.php?id=<?php echo $item->id; ?>" type="button" name="btn-" class="btn btn-outline-secondary">Editar</a>
                                           <a href="assets/vendor/php/panel_de_control_delete.php?action=borrar&id=<?php echo $item->id; ?>" type="submit" class="btn btn-outline-danger" name="btnBorrar">Borrar</a>
                                        </div>
                                     </td>
@@ -464,7 +472,7 @@ require_once('assets/Model/usuario.php');
                            Agregar donación
                         </h5>
                         <br>
-                        <div class="row" style="padding-left: 30px">
+                        <!-- <div class="row" style="padding-left: 30px">
                            <div class="col-xl-3 mb-3">
                               <label style="padding-bottom: 10px;">Usuario:</label>
                               <input type="text" name="txt_username" class="form-control text-center" placeholder="Nombre de usuario..." maxlength="16">
@@ -485,7 +493,7 @@ require_once('assets/Model/usuario.php');
                                  Guardar usuario
                               </button><br>
                            </div>
-                        </div>
+                        </div> -->
                      </form>
 
                      <!-- Vista de usuarios -->
@@ -493,46 +501,9 @@ require_once('assets/Model/usuario.php');
                         <h5 style="margin-top:-16px; margin-left: -16px; margin-right: -16px;
                               padding-bottom:15px; padding-top: 15px; padding-left:30px; 
                               background-color: #1b1b1b; color:white;">
-                           Cuentas de usuario
+                           Panel de donaciones
                         </h5>
                         <br>
-                        <table class="table table-striped table-bordered" style="text-align: center;">
-                           <thead>
-                              <tr>
-                                 <th>ID</th>
-                                 <th>Usuario</th>
-                                 <th>Grupo</th>
-                                 <th>Acciones</th>
-                              </tr>
-                           </thead>
-                           <tbody>
-
-                              <?php
-                              $Usuarios  = Usuario::Get();
-                              foreach ($Usuarios as $usuario) {
-                              ?>
-
-                                 <tr>
-                                    <td style="vertical-align: middle;"><?php echo $usuario->id ?></td>
-                                    <td style="vertical-align: middle;"><?php echo $usuario->username ?></td>
-                                    <td style="vertical-align: middle;"><?php
-                                                                        if ($usuario->auth == 1) {
-                                                                           echo "Administrador";
-                                                                        } else {
-                                                                           echo "Editor";
-                                                                        }
-                                                                        ?></td>
-                                    <td style="vertical-align: middle;">
-                                       <div class="btn-group" role="group" aria-label="">
-                                          <a href="EditUser.php?id=<?php echo $usuario->id; ?>" type="button" name="btn-" class="btn btn-outline-success">Editar</a>
-                                          <a href="assets/vendor/php/panel_de_control_usuario.php?action=borrarU&id=<?php echo $usuario->id; ?>" type="submit" class="btn btn-outline-danger" name="btnBorrar">Borrar</a>
-                                       </div>
-                                    </td>
-                                 </tr>
-                              <?php } ?>
-
-                           </tbody>
-                        </table>
                      </form>
 
                   </div>
