@@ -32,7 +32,7 @@ class Donacion
     public static function Update($id, $url, $monto)
     {
         $conexion = DB::CrearInstancia();
-        $sql = $conexion->prepare("CALL donacion_update(?,?,?,?,?,?)");
+        $sql = $conexion->prepare("CALL donacion_update(?,?,?)");
         $sql->execute(array($id, $url, $monto));
         $conexion = null;
     }

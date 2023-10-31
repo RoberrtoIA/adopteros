@@ -4,6 +4,8 @@ require_once('assets/Model/perro.php');
 require_once('assets/vendor/php/panel_de_control_crud_perros.php');
 require_once('assets/vendor/php/panel_de_control_usuario.php');
 require_once('assets/Model/usuario.php');
+require_once('assets/Model/donacion.php');
+require_once('assets/vendor/php/panel_de_control_crud_donaciones.php');
 ?>
 
 <!DOCTYPE html>
@@ -53,6 +55,15 @@ require_once('assets/Model/usuario.php');
       echo "<script> Swal.fire({icon:'success',               
                     title:'¡Completado!',                
                     text:'Nuevo perro en adopción registrado con éxito',                
+                    confirmButtonText: 'Continuar', confirmButtonColor: '#1a8e32',});              
+                  </script>";
+   }
+
+   # Donacion registrada con éxito
+   if ($donacion_registrado_con_exito == true) {
+      echo "<script> Swal.fire({icon:'success',               
+                    title:'¡Completado!',                
+                    text:'Nuevo enlace agregado con éxito',                
                     confirmButtonText: 'Continuar', confirmButtonColor: '#1a8e32',});              
                   </script>";
    }
@@ -295,13 +306,13 @@ require_once('assets/Model/usuario.php');
                                     <td style="vertical-align: middle;">
                                        <div class="btn-group" role="group" aria-label="">
                                           <?php
-                                          
+
                                           if ($item->adoptado == 0) {
-                                             echo "<a href=\"assets/vendor/php/panel_de_control_options.php?action=cambiar&id=". $item->id. "\" type=\"submit\" class=\"btn btn-outline-success\" name=\"btnBorrar\">✔</a>";
+                                             echo "<a href=\"assets/vendor/php/panel_de_control_options.php?action=cambiar&id=" . $item->id . "\" type=\"submit\" class=\"btn btn-outline-success\" name=\"btnBorrar\">✔</a>";
                                           } else {
-                                             echo "<a href=\"assets/vendor/php/panel_de_control_options.php?action=cambiar&id=". $item->id. "\" type=\"submit\" class=\"btn btn-outline-warning\" name=\"btnBorrar\">X</a>";
+                                             echo "<a href=\"assets/vendor/php/panel_de_control_options.php?action=cambiar&id=" . $item->id . "\" type=\"submit\" class=\"btn btn-outline-warning\" name=\"btnBorrar\">X</a>";
                                           }
-                                          
+
                                           ?>
                                           <a href="EditPuppie.php?id=<?php echo $item->id; ?>" type="button" name="btn-" class="btn btn-outline-secondary">Editar</a>
                                           <a href="assets/vendor/php/panel_de_control_delete.php?action=borrar&id=<?php echo $item->id; ?>" type="submit" class="btn btn-outline-danger" name="btnBorrar">Borrar</a>
@@ -472,28 +483,25 @@ require_once('assets/Model/usuario.php');
                            Agregar donación
                         </h5>
                         <br>
-                        <!-- <div class="row" style="padding-left: 30px">
-                           <div class="col-xl-3 mb-3">
-                              <label style="padding-bottom: 10px;">Usuario:</label>
-                              <input type="text" name="txt_username" class="form-control text-center" placeholder="Nombre de usuario..." maxlength="16">
+                        <div class="row" style="padding-left: 30px">
+                           <div class="col-xl-6 mb-6">
+                              <label style="padding-bottom: 10px;">URL:</label>
+                              <input type="text" name="txt_url" class="form-control text-center" placeholder="URL de donación..." maxlength="300">
                            </div>
                            <div class="col-xl-3 mb-3">
-                              <label style="padding-bottom: 10px;">Password:</label>
-                              <input type="password" name="txt_password" class="form-control text-center" placeholder="Contraseña de usuario..." maxlength="16">
+                              <label style="padding-bottom: 10px;">Monto:</label>
+                              <input type="text" name="txt_monto" class="form-control text-center" placeholder="Monto de la donación..." maxlength="16">
                            </div>
                            <div class="col-xl-3 mb-3">
-                              <label style="padding-bottom: 10px;">Grupo:</label>
-                              <select class="form-control text-center" type="input" name="select_group">
-                                 <option value="1">Administrador</option>
-                                 <option value="0">Editor</option>
-                              </select>
+                              <button type="submit" name="btn_registrar_donacion" class="btn login-btn" value="savepupie" style="margin-top: 32px;">
+                                 Guardar enlace
+                              </button>
                            </div>
-                           <div class="col-xl-3 mb-3">
-                              <button type="submit" name="btn_registrar_usuario" class="btn login-btn" style="margin-top: 32px;">
-                                 Guardar usuario
-                              </button><br>
-                           </div>
-                        </div> -->
+                        </div>
+                        <div class="row" style="padding-left: 30px">
+                            <span style="font-style: italic;">Detalle! El primer enlace debe ser "Débito Automatico" por tener
+                                estilos exclusivos de un texto</span>
+                        </div>
                      </form>
 
                      <!-- Vista de usuarios -->
@@ -504,6 +512,34 @@ require_once('assets/Model/usuario.php');
                            Panel de donaciones
                         </h5>
                         <br>
+                        <table class="table table-striped table-bordered" style="text-align: center;">
+                           <thead>
+                              <tr>
+                                 <th>URL</th>
+                                 <th>Monto</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+
+                              <?php
+                              $donaciones  = Donacion::All();
+                              foreach ($donaciones as $donacion) {
+                              ?>
+
+                                 <tr>
+                                    <td style="vertical-align: middle;"><a href="<?php echo $donacion->url ?>" target="_blank"><?php echo $donacion->url ?></a></td>
+                                    <td style="vertical-align: middle;"><?php echo $donacion->monto ?></td>
+                                    <td style="vertical-align: middle;">
+                                       <div class="btn-group" role="group" aria-label="">
+                                          <a href="EditDonation.php?id=<?php echo $donacion->id; ?>" type="button" name="btn-" class="btn btn-outline-success">Editar</a>
+                                          <a href="assets/vendor/php/panel_de_control_crud_donaciones.php?action=borrar&id=<?php echo $donacion->id; ?>" type="submit" class="btn btn-outline-danger" name="btnBorrar">Borrar</a>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              <?php } ?>
+
+                           </tbody>
+                        </table>
                      </form>
 
                   </div>
