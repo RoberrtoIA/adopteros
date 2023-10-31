@@ -130,95 +130,89 @@ require_once('assets/vendor/php/panel_de_control_crud_donaciones.php');
                      <div class="splide__track">
                         <ul class="splide__list" data-aos="fade-up" data-aos-delay="100">
 
+                           <?php
 
-                           <li class="splide__slide" style="padding-right:20px;">
-                              <div class="icon-box text-center" style="padding-bottom: 25px;">
-                                 <a href="http://mpago.la/wtgh" target="_blank">
-                                    <img src="assets/img/donacion-img.png" style="width: 500px;">
-                                    <span style="position: absolute; top: 25%; left: 50%; transform: translate(-50%, -50%);">
-                                       <h2 style="font-size: 2.5rem; color: #f3f3f1;"><b><big>100$</big></b></h2>
-                                    </span>
-                                 </a>
-                              </div>
-                              <div class="icon-box text-center" style="padding-bottom: 25px;">
-                                 <a href="http://mpago.la/1tFKQ6p" target="_blank">
-                                    <img src="assets/img/b_100.jpg" style="width: 500px;">
-                                 </a>
-                              </div>
-                           </li>
+                           $abrir = true;
 
-                           <li class="splide__slide" data-aos="fade-up" data-aos-delay="100">
-                              <div class="icon-box text-center" style="padding-bottom: 25px;">
-                                 <a href="http://mpago.la/1dvKNt" target="_blank">
-                                    <img src="assets/img/b_50.jpg" style="width: 500px;">
-                                 </a>
-                              </div>
-                              <div class="icon-box text-center" style="padding-bottom: 25px;">
-                                 <a href="http://mpago.la/2V8Be1N" target="_blank">
-                                    <img src="assets/img/b_200.jpg" style="width: 500px;">
-                                 </a>
-                              </div>
-                           </li>
+                           foreach ($donaciones as $key => $donacion) {
+                              $c = $key + 1;
 
-                           <li class="splide__slide" style="padding-right:20px;" data-aos="fade-up" data-aos-delay="100">
-                              <div class="icon-box text-center" style="padding-bottom: 25px;">
-                                 <a href="http://mpago.la/wtgh" target="_blank">
-                                    <img src="assets/img/donacion-img.png" style="width: 500px;">
-                                    <span style="position: absolute; top: 25%; left: 50%; transform: translate(-50%, -50%);">
-                                       <h2 style="font-size: 2.5rem; color: #f3f3f1;"><b><big>100$</big></b></h2>
-                                    </span>
-                                 </a>
-                              </div>
+                              if ($c == 1) {
+                                 echo '<li class="splide__slide" style="padding-right:20px;">';
+                                 echo '<div class="icon-box text-center" style="padding-bottom: 25px;">';
+                                 echo '<a href="' . $donacion->url . '" target="_blank">';
+                                 echo '<img src="assets/img/violet.png" style="width: 500px;">';
+                                 echo '<span style="position: absolute; top: 25%; left: 50%; transform: translate(-50%, -60%);">';
+                                 echo '<h1 style="font-size: 1.8rem; color: #f3f3f1;"><b><big>' . $donacion->monto . '</big></b></h1>';
+                                 echo '</span>';
+                                 echo '</a>';
+                                 echo '</div>';
+                              } else if ($c == 2) {
+                                 echo '<div class="icon-box text-center" style="padding-bottom: 25px;">';
+                                 echo '<a href="' . $donacion->url . '" target="_blank">';
+                                 echo '<img src="assets/img/violet.png" style="width: 500px;">';
+                                 echo '<span style="position: absolute; top: 25%; left: 50%; transform: translate(-50%, 220%);">';
+                                 echo '<h1 style="font-size: 1.8rem; color: #f3f3f1;"><b><big>' . $donacion->monto . '$</big></b></h1>';
+                                 echo '</span>';
+                                 echo '</a>';
+                                 echo '</div>';
+                                 echo '</li>';
+                              } else if ($c == 3) {
+                                 echo '<li class="splide__slide" data-aos="fade-up" data-aos-delay="100">';
+                                 echo '<div class="icon-box text-center" style="padding-bottom: 25px;">';
+                                 echo '<a href="' . $donacion->url . '" target="_blank">';
+                                 echo '<img src="assets/img/violet.png" style="width: 500px;">';
+                                 echo '<span style="position: absolute; top: 25%; left: 50%; transform: translate(-50%, -60%);">';
+                                 echo '<h1 style="font-size: 1.8rem; color: #f3f3f1;"><b><big>' . $donacion->monto . '$</big></b></h1>';
+                                 echo '</span>';
+                                 echo '</a>';
+                                 echo '</div>';
+                              } else if ($c == 4) {
+                                 echo '<div class="icon-box text-center" style="padding-bottom: 25px;">';
+                                 echo '<a href="' . $donacion->url . '" target="_blank">';
+                                 echo '<img src="assets/img/violet.png" style="width: 500px;">';
+                                 echo '<span style="position: absolute; top: 25%; left: 50%; transform: translate(-50%, 220%);">';
+                                 echo '<h1 style="font-size: 1.8rem; color: #f3f3f1;"><b><big>' . $donacion->monto . '$</big></b></h1>';
+                                 echo '</span>';
+                                 echo '</a>';
+                                 echo '</div>';
+                                 echo '</li>';
+                              } else {
+                                 if ($abrir == true) {
+                                    echo '<li class="splide__slide" style="padding-right:20px;" data-aos="fade-up" data-aos-delay="100">';
+                                    echo '<div class="icon-box text-center" style="padding-bottom: 25px;">';
+                                    echo '<a href="' . $donacion->url . '" target="_blank">';
+                                    echo '<img src="assets/img/violet.png" style="width: 500px;">';
+                                    echo '<span style="position: absolute; top: 25%; left: 50%; transform: translate(-50%, -50%);">';
+                                    echo '<h1 style="font-size: 1.8rem; color: #f3f3f1;"><b><big>' . $donacion->monto . '$</big></b></h1>';
+                                    echo '</span>'; 
+                                    echo '</a>';
+                                    echo '</div>';
 
-                              <div class="icon-box text-center" style="padding-bottom: 25px;">
-                                 <a href="http://mpago.la/15mMCr" target="_blank">
-                                    <img src="assets/img/b_400.jpg" style="width: 500px;">
-                                 </a>
-                              </div>
-                           </li>
+                                    $abrir = false;
+                                    continue;
+                                 }
 
-                           <li class="splide__slide" data-aos="fade-up" data-aos-delay="100">
-                              <div class="icon-box text-center" style="padding-bottom: 25px;">
-                                 <a href="http://mpago.la/2Ggugc" target="_blank">
-                                    <img src="assets/img/b_300.jpg" style="width: 500px;">
-                                 </a>
-                              </div>
-                              <div class="icon-box text-center" style="padding-bottom: 25px;">
-                                 <a href="http://mpago.la/2MPATv9" target="_blank">
-                                    <img src="assets/img/b_500.jpg" style="width: 500px;">
-                                 </a>
-                              </div>
-                           </li>
+                                 if ($abrir == false) {
 
-                           <li class="splide__slide" style="padding-right:20px;" data-aos="fade-up" data-aos-delay="100">
-                              <div class="icon-box text-center" style="padding-bottom: 25px;">
-                                 <a href="http://mpago.la/wtgh" target="_blank">
-                                    <img src="assets/img/donacion-img.png" style="width: 500px;">
-                                    <span style="position: absolute; top: 25%; left: 50%; transform: translate(-50%, -50%);">
-                                       <h2 style="font-size: 2.5rem; color: #f3f3f1;"><b><big>100$</big></b></h2>
-                                    </span>
-                                 </a>
-                              </div>
+                                    echo '<div class="icon-box text-center" style="padding-bottom: 25px;">';
+                                    echo '<a href="' . $donacion->url . '" target="_blank">';
+                                    echo '<img src="assets/img/violet.png" style="width: 500px;">';
+                                    echo '<span style="position: absolute; top: 25%; left: 50%; transform: translate(-50%, 220%);">';
+                                    echo '<h1 style="font-size: 1.8rem; color: #f3f3f1;"><b><big>' . $donacion->monto . '$</big></b></h1>';
+                                    echo '</span>';
+                                    echo '</a>';
+                                    echo '</div>';
+                                    echo '</li>';
 
-                              <div class="icon-box text-center" style="padding-bottom: 25px;">
-                                 <a href="http://mpago.la/2sjRF3d" target="_blank">
-                                    <img src="assets/img/b_1000.jpg" style="width: 500px;">
-                                 </a>
-                              </div>
-                           </li>
+                                    $abrir = true;
+                                    continue;
 
-                           <li class="splide__slide" data-aos="fade-up" data-aos-delay="100">
-                              <div class="icon-box text-center" style="padding-bottom: 25px;">
-                                 <a href="http://mpago.la/2KYpfwo" target="_blank">
-                                    <img src="assets/img/b_700.jpg" style="width: 500px;">
-                                 </a>
-                              </div>
-                              <div class="icon-box text-center" style="padding-bottom: 25px;">
-                                 <a href="http://mpago.la/2UZUp3Y" target="_blank">
-                                    <img src="assets/img/b_1500.jpg" style="width: 500px;">
-                                 </a>
-                              </div>
-                           </li>
+                                 }
+                              }
+                           }
+
+                           ?>
 
                         </ul>
                      </div>
