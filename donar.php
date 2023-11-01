@@ -49,12 +49,12 @@ require_once('assets/vendor/php/panel_de_control_crud_donaciones.php');
                <li class="dropdown">
                   <a class="nav-link scrollto" href="inicio.html #adopcion"> <span>Adopción y cuidado</span><i class="bi bi-chevron-down"></i></a>
                   <ul>
-                     <li><a class="nav-link scrollto" href="inicio.html #requisitos">Requisitos para adoptar</a></li>
+                     <li><a class="nav-link scrollto" href="inicio.html #requisitos2">Requisitos para adoptar</a></li>
                      <li><a class="nav-link scrollto" href="inicio.html #contribuir">¿Cómo contribuir?</a></li>
                   </ul>
                </li>
                <li><a href="perros-en-adopcion.php">Perros en adopción</a></li>
-               <li><a href="contacto.php">Contacto</a></li>
+               <li><a class="active" href="contacto.php">Contacto</a></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
          </nav>
@@ -185,7 +185,7 @@ require_once('assets/vendor/php/panel_de_control_crud_donaciones.php');
                                     echo '<img src="assets/img/violet.png" style="width: 500px;">';
                                     echo '<span style="position: absolute; top: 25%; left: 50%; transform: translate(-50%, -50%);">';
                                     echo '<h1 style="font-size: 1.8rem; color: #f3f3f1;"><b><big>' . $donacion->monto . '$</big></b></h1>';
-                                    echo '</span>'; 
+                                    echo '</span>';
                                     echo '</a>';
                                     echo '</div>';
 
@@ -207,7 +207,6 @@ require_once('assets/vendor/php/panel_de_control_crud_donaciones.php');
 
                                     $abrir = true;
                                     continue;
-
                                  }
                               }
                            }

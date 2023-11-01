@@ -48,6 +48,7 @@
     }
 }
 
+
 * {
     margin: 0;
     padding: 0;
@@ -97,6 +98,7 @@ body {
 
 .floating-container .floating-button {
     position: absolute;
+    margin-left: 100% !important;
     width: 65px;
     height: 65px;
     background: #40ab3a;
@@ -108,7 +110,7 @@ body {
     color: white;
     line-height: 65px;
     text-align: center;
-    font-size: 23px;
+    font-size: 26px;
     z-index: 100;
     box-shadow: 0 10px 25px -5px #40ab3a;
     cursor: pointer;
@@ -136,7 +138,7 @@ body {
 
 .floating-container .float-element .material-icons {
     vertical-align: middle;
-    font-size: 16px;
+    font-size: 25px;
 }
 
 .floating-container .float-element:nth-child(1) {

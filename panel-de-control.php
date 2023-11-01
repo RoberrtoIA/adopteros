@@ -290,10 +290,18 @@ require_once('assets/vendor/php/panel_de_control_crud_donaciones.php');
                                     // echo "<td style=\"vertical-align: middle;\">";
                                     if ($item->adoptado == 0) {
                                        echo "<td style=\"vertical-align: middle;\">";
-                                       echo "<img src=\"assets/img/x.png\" alt=\"\" height=\"75px\">";
+                                       // echo "<img src=\"assets/img/x.png\" alt=\"\" height=\"75px\">";
+                                       echo '<span style="color: blue;">●</span>';
+                                       echo '&nbsp;&nbsp;&nbsp;';
+                                       echo 'Disponible';
+                                       echo '&nbsp;&nbsp;';
                                     } else {
                                        echo "<td style=\"vertical-align: middle;\">";
-                                       echo "<img src=\"assets/img/check-mark.png\" alt=\"\" height=\"75px\">";
+                                       echo '<span style="color: green;">●</span>';
+                                       echo '&nbsp;&nbsp;&nbsp;';
+                                       echo 'Adoptad@';
+                                       echo '&nbsp;&nbsp;';
+                                       // echo "<img src=\"assets/img/check-mark.png\" alt=\"\" height=\"75px\">";
                                     }
                                     ?>
                                     </td>
@@ -308,14 +316,18 @@ require_once('assets/vendor/php/panel_de_control_crud_donaciones.php');
                                           <?php
 
                                           if ($item->adoptado == 0) {
-                                             echo "<a href=\"assets/vendor/php/panel_de_control_options.php?action=cambiar&id=" . $item->id . "\" type=\"submit\" class=\"btn btn-outline-success\" name=\"btnBorrar\">✔</a>";
+                                             echo "<a href=\"assets/vendor/php/panel_de_control_options.php?action=cambiar&id=" . $item->id . "\" type=\"submit\" class=\"\" name=\"btnBorrar\">
+                                             <img src=\"assets/img/eye.png\" alt=\"active_button\" height=\"35px\"></a>";
                                           } else {
-                                             echo "<a href=\"assets/vendor/php/panel_de_control_options.php?action=cambiar&id=" . $item->id . "\" type=\"submit\" class=\"btn btn-outline-warning\" name=\"btnBorrar\">X</a>";
+                                             echo "<a href=\"assets/vendor/php/panel_de_control_options.php?action=cambiar&id=" . $item->id . "\" type=\"submit\" class=\"\" name=\"btnBorrar\">
+                                             <img src=\"assets/img/blind.png\" alt=\"inactive_button\" height=\"35px\"></a>";
                                           }
 
                                           ?>
-                                          <a href="EditPuppie.php?id=<?php echo $item->id; ?>" type="button" name="btn-" class="btn btn-outline-secondary">Editar</a>
-                                          <a href="assets/vendor/php/panel_de_control_delete.php?action=borrar&id=<?php echo $item->id; ?>" type="submit" class="btn btn-outline-danger" name="btnBorrar">Borrar</a>
+                                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                          <a href="EditPuppie.php?id=<?php echo $item->id; ?>" type="button" name="btn-" class=""><img src="assets/img/edit.png" alt="edit_button" height="35px"></a>
+                                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                          <a href="assets/vendor/php/panel_de_control_delete.php?action=borrar&id=<?php echo $item->id; ?>" onclick="confirm(" Are you sure you want to delete")" type="submit" class="" name="btnBorrar"><img style="transform: translate(0%, 10%);" src="assets/img/delete.png" alt="delete_button" height="30px"></a>
                                        </div>
                                     </td>
                                  </tr>
@@ -499,8 +511,9 @@ require_once('assets/vendor/php/panel_de_control_crud_donaciones.php');
                            </div>
                         </div>
                         <div class="row" style="padding-left: 30px">
-                            <span style="font-style: italic;">Detalle! El primer enlace debe ser "Débito Automatico" por tener
-                                estilos exclusivos de un texto</span>
+                        <span style="font-style: italic;">La <b>$</b> se agregará automaticamente al final del monto.</span>
+                           <span style="font-style: italic;">PD! El primer enlace debe ser "Débito Automático" por tener
+                              estilos exclusivos de un texto</span>
                         </div>
                      </form>
 
