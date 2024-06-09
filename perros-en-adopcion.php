@@ -146,10 +146,8 @@
                   <!-- Datos de contacto -->
                   <div class="col-lg-3 offset-1 col-md-6 footer-contact">
                      <h3>Adopteros<span>.</span></h3>
-                     <p> Recoleta, Buenos Aires, Argentina;
-                        <br>Plaza Teniente General Emilio Mitre
-                        <br>
-                        <br> <strong>Teléfono: </strong>+54 11 4089-3717
+                     <p> 
+                        <br> <strong>Teléfono: </strong>+54 11 3818 0841
                         <br> <strong>Email: </strong>adopterosargentina@gmail.com
                         <br> 
                      </p>

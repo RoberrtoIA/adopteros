@@ -114,7 +114,7 @@ require_once('assets/vendor/php/panel_de_control_crud_donaciones.php');
                <h2>Mercado Pago</h2>
                <p>Si donás DESDE TU CUENTA, no nos descuentan la comisión.
                   <br><br>Nuestro email en Mercado Pago es adopterosargentina@gmail.com
-                  <br> También podés poner este teléfono y se acredita enseguida y sin descuentos: +1540893717
+                  <br> También podés poner este teléfono y se acredita enseguida y sin descuentos: +15 11 3818-0841
                </p>
             </div>
 
@@ -267,10 +267,8 @@ require_once('assets/vendor/php/panel_de_control_crud_donaciones.php');
                   <!-- Datos de contacto -->
                   <div class="col-lg-3 offset-1 col-md-6 footer-contact">
                      <h3>Adopteros<span>.</span></h3>
-                     <p> Recoleta, Buenos Aires, Argentina;
-                        <br>Plaza Teniente General Emilio Mitre
-                        <br>
-                        <br> <strong>Teléfono: </strong>+54 11 4089-3717
+                     <p> 
+                        <br> <strong>Teléfono: </strong>+54 11 3818 0841
                         <br> <strong>Email: </strong>adopterosargentina@gmail.com
                         <br> 
                      </p>
