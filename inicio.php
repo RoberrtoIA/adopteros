@@ -26,12 +26,12 @@
          
          <div class="container d-flex align-items-center">
             <img src="assets/img/logo_icono.png" style="width: 45px; padding-bottom:6px;">
-            <a href="inicio.html" class="logo me-auto">
+            <a href="inicio.php" class="logo me-auto">
                <img src="assets/img/logo_texto.png">
             </a>
             <nav id="navbar" class="navbar order-last order-lg-0">
                <ul>
-                  <li><a class="nav-link scrollto active" href="inicio.html">Inicio</a></li>
+                  <li><a class="nav-link scrollto active" href="inicio.php">Inicio</a></li>
                   <li><a class="nav-link scrollto" href="#acerca-de">Acerca de</a></li>
                   <li class="dropdown">
                      <a class="nav-link scrollto" href="#adopcion"> 
@@ -260,7 +260,7 @@
                      <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i>
                      </a>
                      <div id="faq2" class="collapse" data-bs-parent=".faq-list">
-                        <p> Si deseas conocer a nuestros perritos en adopción a través de esta página puedes verlos en la sección de perros en adopción. <a href="perros-en-adopcion.php" target="_blank"><b> haz click aquí para ir a Perros en Adopción</b> </a> </p>
+                        <p> Si deseas conocer a nuestros perritos en adopción a través de esta página puedes verlos en la sección de perros en adopción. <a href="perros-en-adopcion.php" target="_blank"><b> Haz click aquí para ir a Perros en Adopción</b> </a> </p>
                      </div>
                   </li>
                   <li>
@@ -297,10 +297,10 @@
                   <div class="col-lg-2 offset-3 col-md-6 footer-links">
                      <h4>Enlaces de utilidad</h4>
                      <ul>
-                        <li><i class="bx bx-chevron-right"></i> <a href="inicio.html">Inicio</a></li>
-                        <i class="bx bx-chevron-right"></i> <a href="donar.php">Donar</a>
+                        <li><i class="bx bx-chevron-right"></i> <a href="inicio.php">Inicio</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="donar.php">Donar</a></li>
                         <li><i class="bx bx-chevron-right"></i> <a href="perros-en-adopcion.php">Perros en adopción</a></li>
-                        <i class="bx bx-chevron-right"></i> <a href="contacto.php">Contacto</a> 
+                        <li><i class="bx bx-chevron-right"></i> <a href="contacto.php">Contacto</a> </li>
                      </ul>
                   </div>
                  

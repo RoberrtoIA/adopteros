@@ -1,0 +1,12 @@
+CREATE TABLE contactos (
+  id INT PRIMARY KEY,
+  telefono_upfoter VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  instagram_link VARCHAR(255) NOT NULL,
+  twitter_link VARCHAR(255) NOT NULL,
+  facebook_link VARCHAR(255) NOT NULL
+);
+
+INSERT INTO contactos (id, telefono_upfoter, email, instagram_link, twitter_link, facebook_link)
+VALUES (1, "+54 11 3818 0841", "adopterosargentina@gmail.com", "https://www.instagram.com/adopterosargentina/",
+"https://twitter.com/adopteros_arg/", "https://www.facebook.com/AdopterosArgentina/");
