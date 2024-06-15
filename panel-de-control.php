@@ -7,6 +7,7 @@ require_once('assets/Model/usuario.php');
 require_once('assets/Model/donacion.php');
 require_once('assets/vendor/php/panel_de_control_crud_donaciones.php');
 require_once('assets/Model/informacion_contacto.php');
+require_once('assets/vendor/php/panel_de_control_informacion_contacto.php');
 ?>
 
 <!DOCTYPE html>
@@ -65,6 +66,15 @@ require_once('assets/Model/informacion_contacto.php');
       echo "<script> Swal.fire({icon:'success',               
                     title:'¡Completado!',                
                     text:'Nuevo enlace agregado con éxito',                
+                    confirmButtonText: 'Continuar', confirmButtonColor: '#1a8e32',});              
+                  </script>";
+   }
+
+   # Info contacto actualizada con éxito
+   if ($info_contacto_editada_con_exito == true) {
+      echo "<script> Swal.fire({icon:'success',               
+                    title:'¡Completado!',                
+                    text:'Información de contacto actualizada con éxito',                
                     confirmButtonText: 'Continuar', confirmButtonColor: '#1a8e32',});              
                   </script>";
    }
