@@ -1,6 +1,8 @@
 <?php
    require_once('assets/Connection/database.php');   
    require_once('assets/Model/perro.php');
+   
+   require_once('assets/Model/informacion_contacto.php');
 ?>
 
 <!DOCTYPE html>
@@ -136,6 +138,10 @@
             </div>
          </section>
       </main>
+
+      <?php
+         $info = InformacionContacto::GetAll();       
+      ?>
       
       <!-- Footer -->
       <footer id="footer">
@@ -146,9 +152,9 @@
                   <!-- Datos de contacto -->
                   <div class="col-lg-3 offset-1 col-md-6 footer-contact">
                      <h3>Adopteros<span>.</span></h3>
-                     <p> 
-                        <br> <strong>Teléfono: </strong>+54 11 3818 0841
-                        <br> <strong>Email: </strong>adopterosargentina@gmail.com
+                     <p>
+                        <br> <strong>Teléfono: </strong><?= $info['telefono_upfoter']; ?>
+                        <br> <strong>Email: </strong><?= $info['email']; ?>
                         <br> 
                      </p>
                   </div>
@@ -157,10 +163,10 @@
                   <div class="col-lg-2 offset-3 col-md-6 footer-links">
                      <h4>Enlaces de utilidad</h4>
                      <ul>
-                        <li><i class="bx bx-chevron-right"></i> <a href="inicio.php">Inicio</a></li>
-                        <i class="bx bx-chevron-right"></i> <a href="donar.php">Donar</a>
-                        <li><i class="bx bx-chevron-right"></i> <a href="perros-en-adopcion.php">Perros en adopción</a></li>
-                        <i class="bx bx-chevron-right"></i> <a href="contacto.php">Contacto</a> 
+                        <i class="bx bx-chevron-right"></i> <a href="inicio.php">Inicio</a>
+                        <li><i class="bx bx-chevron-right"></i> <a href="donar.php">&nbsp;Donar</a></li>
+                        <i class="bx bx-chevron-right"></i> <a href="perros-en-adopcion.php">Perros en adopción</a>
+                        <li><i class="bx bx-chevron-right"></i> <a href="contacto.php">&nbsp;Contacto</a> </li>
                      </ul>
                   </div>
                  

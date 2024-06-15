@@ -55,7 +55,7 @@
             <button class="btn login-btn col-12" type="submit" name="btn_ingresar">
                Iniciar sesión
             </button> 
-            <p class="text-muted" style="padding-top: 15px;">&copy; 2022 Adopteros Argentina</p>
+            <p class="text-muted" style="padding-top: 15px;">&copy; <?= date('Y'); ?> Adopteros Argentina</p>
          
          </form>
       </div>

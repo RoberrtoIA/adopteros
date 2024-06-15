@@ -1,6 +1,8 @@
 <?php
 require_once('assets/Model/donacion.php');
 require_once('assets/vendor/php/panel_de_control_crud_donaciones.php');
+
+require_once('assets/Model/informacion_contacto.php');
 ?>
 
 <!DOCTYPE html>
@@ -258,6 +260,10 @@ require_once('assets/vendor/php/panel_de_control_crud_donaciones.php');
       </section>
    </main>
 
+   <?php
+         $info = InformacionContacto::GetAll();       
+   ?>
+
    <!-- Footer -->
    <footer id="footer">
          <div class="footer-top">
@@ -267,9 +273,9 @@ require_once('assets/vendor/php/panel_de_control_crud_donaciones.php');
                   <!-- Datos de contacto -->
                   <div class="col-lg-3 offset-1 col-md-6 footer-contact">
                      <h3>Adopteros<span>.</span></h3>
-                     <p> 
-                        <br> <strong>Teléfono: </strong>+54 11 3818 0841
-                        <br> <strong>Email: </strong>adopterosargentina@gmail.com
+                     <p>
+                        <br> <strong>Teléfono: </strong><?= $info['telefono_upfoter']; ?>
+                        <br> <strong>Email: </strong><?= $info['email']; ?>
                         <br> 
                      </p>
                   </div>
@@ -278,10 +284,10 @@ require_once('assets/vendor/php/panel_de_control_crud_donaciones.php');
                   <div class="col-lg-2 offset-3 col-md-6 footer-links">
                      <h4>Enlaces de utilidad</h4>
                      <ul>
-                        <li><i class="bx bx-chevron-right"></i> <a href="inicio.php">Inicio</a></li>
-                        <i class="bx bx-chevron-right"></i> <a href="donar.php">Donar</a>
-                        <li><i class="bx bx-chevron-right"></i> <a href="perros-en-adopcion.php">Perros en adopción</a></li>
-                        <i class="bx bx-chevron-right"></i> <a href="contacto.php">Contacto</a> 
+                        <i class="bx bx-chevron-right"></i> <a href="inicio.php">Inicio</a>
+                        <li><i class="bx bx-chevron-right"></i> <a href="donar.php">&nbsp;Donar</a></li>
+                        <i class="bx bx-chevron-right"></i> <a href="perros-en-adopcion.php">Perros en adopción</a>
+                        <li><i class="bx bx-chevron-right"></i> <a href="contacto.php">&nbsp;Contacto</a> </li>
                      </ul>
                   </div>
                  

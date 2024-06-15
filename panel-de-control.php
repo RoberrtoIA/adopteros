@@ -6,6 +6,7 @@ require_once('assets/vendor/php/panel_de_control_usuario.php');
 require_once('assets/Model/usuario.php');
 require_once('assets/Model/donacion.php');
 require_once('assets/vendor/php/panel_de_control_crud_donaciones.php');
+require_once('assets/Model/informacion_contacto.php');
 ?>
 
 <!DOCTYPE html>
@@ -185,6 +186,13 @@ require_once('assets/vendor/php/panel_de_control_crud_donaciones.php');
                <li class="nav-item col-3">
                   <a class="nav-link" id="a5" data-bs-toggle="tab" data-bs-target="#gestion_donacion">
                      <h4 class="d-none d-lg-block">Gestión de Donaciones</h4>
+                  </a>
+               </li>
+
+               <!-- 6. Gestión - Información de Contacto -->
+               <li class="nav-item col-3" style="margin-top:16px">
+                  <a class="nav-link" id="a5" data-bs-toggle="tab" data-bs-target="#gestion_contacto">
+                     <h4 class="d-none d-lg-block">Información de Contacto</h4>
                   </a>
                </li>
             </ul>
@@ -557,21 +565,107 @@ require_once('assets/vendor/php/panel_de_control_crud_donaciones.php');
 
                   </div>
                </div>
+
+               <!-- 6. Gestión - Información de Contacto -->
+
+               <?php
+                  $info = InformacionContacto::GetAll();       
+               ?>
+
+               <div class="tab-pane" id="gestion_contacto">
+                     <div class="container" style="padding-top: 40px; padding-bottom: 20px;">
+
+                        <form class="shadow p-3 mb-5 bg-white rounded" action="" method="POST" style="padding: 30px 30px;">
+                           <h5 style="margin-top:-16px; margin-left: -16px; margin-right: -16px;
+                              padding-bottom:15px; padding-top: 15px; padding-left:30px; 
+                              background-color: #1b1b1b; color:white;">
+                              Configuración basica de contacto
+                           </h5>
+                           <br>
+                           <div class="row" style="padding-left: 30px">
+                              <div class="col-xl-3 mb-3">
+                                 <label style="padding-bottom: 10px;">Teléfono:</label>
+                                 <input type="text" name="txt_telefono" class="form-control text-center" placeholder="Teléfono" maxlength="60" value="<?= $info['telefono_upfoter']; ?>">
+                              </div>
+                              <div class="col-xl-4 mb-4">
+                                 <label style="padding-bottom: 10px;">Email</label>
+                                 <input type="text" name="txt_email" class="form-control text-center" placeholder="Email" maxlength="60" value="<?= $info['email']; ?>">
+                              </div>
+                              <div class="col-xl-5 mb-5">
+                                 <label style="padding-bottom: 10px;">Link de Instagram:</label>
+                                 <input type="text" name="txt_instagram" class="form-control text-center" placeholder="Link de Instagram" maxlength="200" value="<?= $info['instagram_link']; ?>">
+                              </div>
+                              <div class="col-xl-5 mb-5">
+                                 <label style="padding-bottom: 10px;">Link de Twitter:</label>
+                                 <input type="text" name="txt_twitter" class="form-control text-center" placeholder="Link de Twitter" maxlength="200" value="<?= $info['twitter_link']; ?>">
+                              </div>
+                              <div class="col-xl-5 mb-5">
+                                 <label style="padding-bottom: 10px;">Link de Facebook:</label>
+                                 <input type="text" name="txt_facebook" class="form-control text-center" placeholder="Link de Facebook" maxlength="200" value="<?= $info['facebook_link']; ?>">
+                              </div>
+                              <div class="col-xl-2 mb-2">
+                                 <button type="submit" name="btn_actualizar_info_contacto" class="btn login-btn" style="margin-top: 32px;">
+                                    Actualizar datos
+                                 </button><br>
+                              </div>
+                           </div>
+                        </form>
+
+                     </div>
+                  </div>
             </div>
          </div>
       </section>
    </main>
 
    <!-- Footer -->
-   <footer id="footer">
-      <div class="container d-md-flex py-4">
-         <div class="me-md-auto text-center text-md-start">
-            <div class="copyright" style="padding-top: 10px;">
-               &copy; Copyright <strong><span>Adopteros Argentina</span></strong>. 2022 All Rights Reserved
+      <footer id="footer">
+         <div class="footer-top">
+            <div class="container">
+               <div class="row">
+                  
+                  <!-- Datos de contacto -->
+                  <div class="col-lg-3 offset-1 col-md-6 footer-contact">
+                     <h3>Adopteros<span>.</span></h3>
+                     <p>
+                        <br> <strong>Teléfono: </strong><?= $info['telefono_upfoter']; ?>
+                        <br> <strong>Email: </strong><?= $info['email']; ?>
+                        <br> 
+                     </p>
+                  </div>
+                  
+                  <!-- Enlaces -->
+                  <div class="col-lg-2 offset-3 col-md-6 footer-links">
+                     <h4>Enlaces de utilidad</h4>
+                     <ul>
+                        <i class="bx bx-chevron-right"></i> <a href="inicio.php">Inicio</a>
+                        <li><i class="bx bx-chevron-right"></i> <a href="donar.php">&nbsp;Donar</a></li>
+                        <i class="bx bx-chevron-right"></i> <a href="perros-en-adopcion.php">Perros en adopción</a>
+                        <li><i class="bx bx-chevron-right"></i> <a href="contacto.php">&nbsp;Contacto</a> </li>
+                     </ul>
+                  </div>
+                 
+                  <!-- Mapa -->
+                  <!-- <div class="col-lg-6 col-md-6 footer-newsletter">
+                     <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13138.54569057835!2d-58.3970969!3d-34.5880651!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xafc4c06da4f0d167!2sAdopteros%20Argentina!5e0!3m2!1sen!2sjp!4v1631593222641!5m2!1sen!2sjp" width="120%" height="160" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                  </div> -->
+               </div>
             </div>
          </div>
-      </div>
-   </footer>
+
+          <!-- Bottom -->
+          <div class="container d-md-flex py-4">
+            <div class="me-md-auto text-center text-md-start">
+               <div class="copyright" style="padding-top: 10px"> &copy; Copyright <strong><span>Adopteros Argentina</span></strong>. <?= date('Y'); ?> All Rights Reserved </div>
+            </div>
+            <div class="social-links text-center text-md-end pt-3 pt-md-0">
+               <a href="<?= $info['instagram_link']; ?>" class="instagram" target="_blank"> <i class="bx bxl-instagram"></i> </a>
+               <a href="<?= $info['twitter_link']; ?>" class="twitter" target="_blank"> <i class="bx bxl-twitter"></i> </a>
+               <a href="<?= $info['facebook_link']; ?>" class="facebook" target="_blank"> <i class="bx bxl-facebook"></i> </a>
+               <!-- <a href="https://www.youtube.com/channel/UCwjWHlJzbmYaIG6NLt2eTpQ/" class="youtube" target="_blank"> <i class="bx bxl-youtube"></i> </a> -->
+            </div>
+         </div>
+         </footer>
 
    <!-- Go top -->
    <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
