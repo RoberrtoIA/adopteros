@@ -1,3 +1,8 @@
+<?php
+   require_once('assets/Connection/database.php');   
+   require_once('assets/Model/informacion_contacto.php');
+?>
+
 <!DOCTYPE html>
 <html lang="es">
    <head>
@@ -277,6 +282,10 @@
          </section>
       </main>
 
+      <?php
+         $info = InformacionContacto::GetAll();       
+      ?>
+
       <!-- Footer -->
       <footer id="footer">
          <div class="footer-top">
@@ -287,8 +296,8 @@
                   <div class="col-lg-3 offset-1 col-md-6 footer-contact">
                      <h3>Adopteros<span>.</span></h3>
                      <p>
-                        <br> <strong>Teléfono: </strong>+54 11 3818 0841
-                        <br> <strong>Email: </strong>adopterosargentina@gmail.com
+                        <br> <strong>Teléfono: </strong><?= $info['telefono_upfoter']; ?>
+                        <br> <strong>Email: </strong><?= $info['email']; ?>
                         <br> 
                      </p>
                   </div>
@@ -297,10 +306,10 @@
                   <div class="col-lg-2 offset-3 col-md-6 footer-links">
                      <h4>Enlaces de utilidad</h4>
                      <ul>
-                        <li><i class="bx bx-chevron-right"></i> <a href="inicio.php">Inicio</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="donar.php">Donar</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="perros-en-adopcion.php">Perros en adopción</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="contacto.php">Contacto</a> </li>
+                        <i class="bx bx-chevron-right"></i> <a href="inicio.php">Inicio</a>
+                        <li><i class="bx bx-chevron-right"></i> <a href="donar.php">&nbsp;Donar</a></li>
+                        <i class="bx bx-chevron-right"></i> <a href="perros-en-adopcion.php">Perros en adopción</a>
+                        <li><i class="bx bx-chevron-right"></i> <a href="contacto.php">&nbsp;Contacto</a> </li>
                      </ul>
                   </div>
                  
@@ -315,12 +324,12 @@
          <!-- Bottom -->
          <div class="container d-md-flex py-4">
             <div class="me-md-auto text-center text-md-start">
-               <div class="copyright" style="padding-top: 10px"> &copy; Copyright <strong><span>Adopteros Argentina</span></strong>. 2022 All Rights Reserved </div>
+               <div class="copyright" style="padding-top: 10px"> &copy; Copyright <strong><span>Adopteros Argentina</span></strong>. <?= date('Y'); ?> All Rights Reserved </div>
             </div>
             <div class="social-links text-center text-md-end pt-3 pt-md-0">
-               <a href="https://www.instagram.com/adopterosargentina/" class="instagram" target="_blank"> <i class="bx bxl-instagram"></i> </a>
-               <a href="https://twitter.com/adopteros_arg/" class="twitter" target="_blank"> <i class="bx bxl-twitter"></i> </a>
-               <a href="https://www.facebook.com/AdopterosArgentina/" class="facebook" target="_blank"> <i class="bx bxl-facebook"></i> </a>
+               <a href="<?= $info['instagram_link']; ?>" class="instagram" target="_blank"> <i class="bx bxl-instagram"></i> </a>
+               <a href="<?= $info['twitter_link']; ?>" class="twitter" target="_blank"> <i class="bx bxl-twitter"></i> </a>
+               <a href="<?= $info['facebook_link']; ?>" class="facebook" target="_blank"> <i class="bx bxl-facebook"></i> </a>
                <!-- <a href="https://www.youtube.com/channel/UCwjWHlJzbmYaIG6NLt2eTpQ/" class="youtube" target="_blank"> <i class="bx bxl-youtube"></i> </a> -->
             </div>
          </div>

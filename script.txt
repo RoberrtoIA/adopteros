@@ -10,3 +10,24 @@ CREATE TABLE contactos (
 INSERT INTO contactos (id, telefono_upfoter, email, instagram_link, twitter_link, facebook_link)
 VALUES (1, "+54 11 3818 0841", "adopterosargentina@gmail.com", "https://www.instagram.com/adopterosargentina/",
 "https://twitter.com/adopteros_arg/", "https://www.facebook.com/AdopterosArgentina/");
+
+
+DELIMITER //
+CREATE PROCEDURE `contacto_update`(
+	IN _telefono VARCHAR(255), 
+	IN _email VARCHAR(255),
+	IN _instagram_link VARCHAR(255),
+	IN _twitter_link VARCHAR(255),
+	IN _facebook_link VARCHAR(255)
+)
+BEGIN  
+    UPDATE contactos
+    SET 
+	 telefono_upfoter = _telefono, 
+    email = _email,
+    instagram_link = _instagram_link,
+    twitter_link = _twitter_link,
+    facebook_link = _facebook_link
+    WHERE id = 1;
+END//
+DELIMITER ;
