@@ -219,6 +219,13 @@ require_once('assets/vendor/php/panel_de_control_informacion_contacto.php');
                      <h4 class="d-none d-lg-block">¿Cómo contribuir?</h4>
                   </a>
                </li>
+
+               <!-- 9. Gestión - FAQ -->
+               <li class="nav-item col-3" style="margin-top:16px">
+                  <a class="nav-link" id="a5" data-bs-toggle="tab" data-bs-target="#gestion_faq">
+                     <h4 class="d-none d-lg-block">FAQ</h4>
+                  </a>
+               </li>
             </ul>
 
             <div class="tab-content">
@@ -739,6 +746,38 @@ Los curamos, les damos atención veterinaria y luego buscamos que sean adoptados
                            <div class="col-xl-2 mb- offset-10">
                               <button type="submit" name="btn_actualizar_info_contacto" class="btn login-btn" style="margin-top: 52px;">
                                  Actualizar Landing
+                              </button><br>
+                           </div>
+                        </div>
+                  </div>
+                  </form>
+
+               </div>
+
+               <!-- 9. Gestión - FAQ -->
+
+               <div class="tab-pane" id="gestion_faq">
+                  <div class="container" style="padding-top: 40px; padding-bottom: 20px;">
+
+                     <form class="shadow p-3 mb-5 bg-white rounded" action="" method="POST" style="padding: 30px 30px;">
+                        <h5 style="margin-top:-16px; margin-left: -16px; margin-right: -16px;
+                              padding-bottom:15px; padding-top: 15px; padding-left:30px; 
+                              background-color: #1b1b1b; color:white;">
+                           Adopción | Cuidados
+                        </h5>
+                        <br>
+                        <div class="row" style="padding-left: 30px">
+                           <div class="col-xl-10 mb-10">
+                              <label style="padding-bottom: 10px;">Pregunta:</label>
+                              <input type="text" name="txt_telefono" class="form-control text-center" placeholder="Pregunta" maxlength="200" value="¡Adopta a tu nuevo mejor amigo hoy!">
+                           </div>
+                           <div class="col-xl-10 mb-10">
+                              <label style="padding-bottom: 10px; padding-top: 15px;">Misión:</label>
+                              <textarea type="text" style="height: 10vh;" name="txt_telefono" class="form-control text-center" placeholder="Mision" maxlength="500" value="Ver perros en adopción"></textarea>
+                           </div>
+                           <div class="col-xl-2 mb-2">
+                           <button type="submit" name="btn_agregar_item_contribuir" class="btn login-btn" style="margin-top: 52px; background-color:#1b1b1b">
+                                 Agregar FAQ
                               </button><br>
                            </div>
                         </div>
