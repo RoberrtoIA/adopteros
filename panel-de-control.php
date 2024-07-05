@@ -206,9 +206,17 @@ require_once('assets/vendor/php/panel_de_control_informacion_contacto.php');
                   </a>
                </li>
 
+               <!-- 7. Gestión - Landing Page -->
                <li class="nav-item col-3" style="margin-top:16px">
                   <a class="nav-link" id="a5" data-bs-toggle="tab" data-bs-target="#gestion_landing">
                      <h4 class="d-none d-lg-block">Landing Page</h4>
+                  </a>
+               </li>
+
+               <!-- 8. Gestión - ¿Cómo contribuir? -->
+               <li class="nav-item col-3" style="margin-top:16px">
+                  <a class="nav-link" id="a5" data-bs-toggle="tab" data-bs-target="#gestion_adopcion_cuidados">
+                     <h4 class="d-none d-lg-block">¿Cómo contribuir?</h4>
                   </a>
                </li>
             </ul>
@@ -680,6 +688,55 @@ Los curamos, les damos atención veterinaria y luego buscamos que sean adoptados
                               <textarea type="text" style="height: 10vh;" name="txt_telefono" class="form-control text-center" placeholder="Nuestro sueño" maxlength="500" value="Ver perros en adopción"></textarea>
                            </div>
                            <div class="col-xl-2 mb- offset-3">
+                              <button type="submit" name="btn_actualizar_info_contacto" class="btn login-btn" style="margin-top: 52px;">
+                                 Actualizar Landing
+                              </button><br>
+                           </div>
+                        </div>
+                  </div>
+                  </form>
+
+               </div>
+
+               <!-- 8. Gestión - Adopción y cuidados -->
+
+               <div class="tab-pane" id="gestion_adopcion_cuidados">
+                  <div class="container" style="padding-top: 40px; padding-bottom: 20px;">
+
+                     <form class="shadow p-3 mb-5 bg-white rounded" action="" method="POST" style="padding: 30px 30px;">
+                        <h5 style="margin-top:-16px; margin-left: -16px; margin-right: -16px;
+                              padding-bottom:15px; padding-top: 15px; padding-left:30px; 
+                              background-color: #1b1b1b; color:white;">
+                           Adopción | Cuidados
+                        </h5>
+                        <br>
+                        <div class="row" style="padding-left: 30px">
+                           <div class="col-xl-8 mb-8">
+                              <label style="padding-bottom: 10px;">Parrafo de contribución:</label>
+                              <textarea type="text" style="height: 10vh;" name="txt_telefono" class="form-control text-center" placeholder="Parrafo/Subtitulo" maxlength="500" value="Adopta un amigo.">Adopta un amigo.</textarea>
+                           </div>
+
+                           <div class="col-xl-8 mb-8">
+                              <label style="padding-bottom: 10px; padding-top: 15px;">También necesitamos:</label>
+                              <table class="table table-striped table-bordered" style="text-align: center;">
+                                 <thead>
+                                    <tr>
+                                    <!-- <th>Texto</th> -->
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                    <td style="vertical-align: middle;">Balanceado de buena calidad para perros adultos y cachorros.</td>
+                                 </tbody>
+                              </table>
+                           </div>
+
+                           <div class="col-xl-2 mb-2">
+                           <button type="submit" name="btn_agregar_item_contribuir" class="btn login-btn" style="margin-top: 52px; background-color:#1b1b1b">
+                                 Agregar item
+                              </button><br>
+                           </div>
+
+                           <div class="col-xl-2 mb- offset-10">
                               <button type="submit" name="btn_actualizar_info_contacto" class="btn login-btn" style="margin-top: 52px;">
                                  Actualizar Landing
                               </button><br>
