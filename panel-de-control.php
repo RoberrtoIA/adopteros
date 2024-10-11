@@ -755,12 +755,6 @@ Los curamos, les damos atención veterinaria y luego buscamos que sean adoptados
                                  Agregar item
                               </button><br>
                            </div>
-
-                           <div class="col-xl-2 mb- offset-10">
-                              <button type="submit" name="btn_actualizar_info_contacto" class="btn login-btn" style="margin-top: 52px;">
-                                 Actualizar Landing
-                              </button><br>
-                           </div>
                         </div>
                   </div>
                   </form>
@@ -780,6 +774,35 @@ Los curamos, les damos atención veterinaria y luego buscamos que sean adoptados
                         </h5>
                         <br>
                         <div class="row" style="padding-left: 30px">
+                        <table class="table table-striped table-bordered" style="text-align: center;">
+                              <thead>
+                                 <tr>
+                                    <th>Texto</th>
+                                    <th>Sub-texto</th>
+                                    <th>Acciones</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <?php
+                                 $tablaPreguntas = Pregunta::All();
+                                 foreach ($tablaPreguntas as $row => $item) {
+                                 ?>
+                                 <tr>
+                                    <td style="vertical-align: middle;">
+                                    <?php echo $item->pregunta ?>
+                                    </td>
+                                    <td style="vertical-align: middle;">
+                                    <?php echo $item->respuesta ?>
+                                    </td>
+                                    <td style="vertical-align: middle;">
+                                    <a href="assets/vendor/php/panel_de_control_crud_preguntas.php?action=borrar&id=<?php echo $item->id; ?>" onclick="confirm('¿Estas segur@?')" type="submit" class="" name="btnBorrar"><img style="transform: translate(0%, 10%);" src="assets/img/delete.png" alt="delete_button" height="30px"></a>
+                                    </td>
+                                 </tr>
+                                 <?php
+                                    } 
+                                 ?>
+                              </tbody>
+                           </table>
                            <div class="col-xl-10 mb-10">
                               <label style="padding-bottom: 10px;">Titulo:</label>
                               <input type="text" name="txt_telefono" class="form-control text-center" placeholder="Entrevistas" maxlength="200">
@@ -790,7 +813,7 @@ Los curamos, les damos atención veterinaria y luego buscamos que sean adoptados
                            </div>
                            <div class="col-xl-2 mb-2">
                               <button type="submit" name="btn_agregar_item_contribuir" class="btn login-btn" style="margin-top: 52px; background-color:#1b1b1b">
-                                 Agregar FAQ
+                                 Agregar requisito
                               </button><br>
                            </div>
                         </div>
