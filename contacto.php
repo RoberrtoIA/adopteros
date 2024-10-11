@@ -142,7 +142,7 @@
          <!-- Bottom -->
          <div class="container d-md-flex py-4">
             <div class="me-md-auto text-center text-md-start">
-               <div class="copyright" style="padding-top: 10px"> &copy; Copyright <strong><span>Adopteros Argentina</span></strong>. 2022 All Rights Reserved </div>
+            <div class="copyright" style="padding-top: 10px"> &copy; Copyright <strong><span>Adopteros Argentina</span></strong>. <?= date('Y'); ?> All Rights Reserved </div>
             </div>
             <div class="social-links text-center text-md-end pt-3 pt-md-0">
                <a href="https://www.instagram.com/adopterosargentina/" class="instagram" target="_blank"> <i class="bx bxl-instagram"></i> </a>

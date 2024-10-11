@@ -1,0 +1,44 @@
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel2" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+          <div class="modal-content" style="height: 80px; margin-bottom: 40%;">
+              <form class="shadow p-3 mb-5 bg-white rounded" action="" method="POST" style="padding: 30px 30px;" enctype="multipart/form-data">
+                  <h5 style="margin-top:-16px; margin-left: -16px; margin-right: -16px;
+                              padding-bottom:15px; padding-top: 15px; padding-left:30px; 
+                              background-color: #1b1b1b; color:white;">
+                      Registro de preguntas
+                      <button type="button" class="btn btn-danger offset-8" data-bs-dismiss="modal">X</button>
+                  </h5>
+
+                  <br>
+                  <div class="row" style="padding-left: 30px">
+                      <div class="col-xl-3 mb-3">
+                          <label style="padding-bottom: 10px;">Nombre:</label>
+                          <input type="text" maxlength="24" name="txt_name" class="form-control text-center" placeholder="Nombre de perro...">
+                      </div>
+                      <div class="col-xl-2 mb-3">
+                          <label style="padding-bottom: 10px;">Años:</label>
+                          <input type="number" min="0" max="30" name="txt_edad" class="form-control text-center" placeholder="0">
+                      </div>
+                      <div class="col-xl-2 mb-3">
+                          <label style="padding-bottom: 10px;">Meses:</label>
+                          <input type="number" min="0" max="11" name="txt_edad_meses" class="form-control text-center" placeholder="0">
+                      </div>
+                      <div class="col-xl-3 mb-3">
+                          <label style="padding-bottom: 14px;">Fotografía:</label>
+                          <input type="file" class="form-control-file" name="photo">
+                      </div>
+                      <div class="form-group">
+                          <label class=" mb-3" for="description">Descripción:</label>
+                          <textarea class="form-control" name="description" maxlength="400" rows="3"></textarea>
+                      </div>
+                      <div class="col-xl-3 mb-3">
+                          <button type="submit" name="btn_registrar" class="btn login-btn" value="savepupie" style="margin-top: 32px;">
+                              Guardar mascota
+                          </button><br>
+                      </div>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>

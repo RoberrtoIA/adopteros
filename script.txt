@@ -31,3 +31,28 @@ BEGIN
     WHERE id = 1;
 END//
 DELIMITER ;
+
+
+CREATE TABLE preguntas (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  pregunta VARCHAR(1000) NOT NULL,
+  respuesta TEXT NOT NULL
+);
+
+
+INSERT INTO preguntas (id, pregunta, respuesta)
+VALUES (default, "¿Cómo y dónde puedo contactarlos para adoptar?", "Todos los sábados hacemos Encuentros Adopteros de 15:00 - 18:00 horas, en Plaza TG. Emilio Mitre, Av. Pueyrredón y Av. Las Heras (CABA).
+
+También puedes llamarnos al: +54 11 4089-3717 (NO WHATSAPP) o contactarnos a través de nuestro email: adopterosargentina@gmail.com"),
+ (DEFAULT, "¿Cómo puedo ser parte de Adopteros y contribuir?", "Adoptando, difundiendo, creando conciencia, transitando, siendo voluntario/a, participando, realizando una donación.");
+
+DELIMITER //
+CREATE PROCEDURE `pregunta_insert`(
+IN _pregunta VARCHAR(1000), 
+IN _respuesta TEXT
+)
+BEGIN  
+    INSERT INTO preguntas(id, pregunta, respuesta)
+    VALUES (default, _pregunta, _respuesta);
+END//
+DELIMITER ;

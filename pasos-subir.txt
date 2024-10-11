@@ -1,0 +1,27 @@
+Actualizar bd
+
+Agregar tablas y funciones
+
+Agregar assets/icons
+
+Agregar assets/modals
+
+Agregar assets/Model/pregunta
+
+Agregar inicio.php
+
+Agregar assets/vendor/php/panel_de_control_crud_preguntas.php
+
+Agregar perros-en-adopcion.php
+
+Agregar panel-de-control.php
+
+Agregar inicio.php
+
+Agregar donar.php
+
+Agregar contacto.php
+
+Agregar assets/Model/pregunta.php
+
+Agregar assets/vendor/php/panel_de_control_crud_preguntas.php

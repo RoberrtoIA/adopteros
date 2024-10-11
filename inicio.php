@@ -1,6 +1,7 @@
 <?php
    require_once('assets/Connection/database.php');   
    require_once('assets/Model/informacion_contacto.php');
+   require_once('assets/Model/pregunta.php');
 ?>
 
 <!DOCTYPE html>
@@ -249,26 +250,39 @@
                <ul class="faq-list accordion" data-aos="fade-up">
                   <li>
                      <a data-bs-toggle="collapse" class="collapsed" data-bs-target="#faq1">
-                     ¿Cómo y dónde puedo contactarlos para adoptar?
-                     <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i>
-                     </a>
-                     <div id="faq1" class="collapse" data-bs-parent=".faq-list">
-                        <p> Todos los sábados hacemos Encuentros Adopteros de 15:00 - 18:00 horas, en Plaza TG. Emilio Mitre, Av. Pueyrredón y Av. Las Heras (CABA).
-                           <br>
-                           <br> También puedes llamarnos al: +54 11 4089-3717 (NO WHATSAPP) o contactarnos a través de nuestro email: adopterosargentina@gmail.com 
-                        </p>
-                     </div>
-                  </li>
-                  <li>
-                     <a data-bs-toggle="collapse" class="collapsed" data-bs-target="#faq2">
                      ¿Cuáles son los perritos que puedo adoptar?
                      <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i>
                      </a>
-                     <div id="faq2" class="collapse" data-bs-parent=".faq-list">
+                     <div id="faq1" class="collapse" data-bs-parent=".faq-list">
                         <p> Si deseas conocer a nuestros perritos en adopción a través de esta página puedes verlos en la sección de perros en adopción. <a href="perros-en-adopcion.php" target="_blank"><b> Haz click aquí para ir a Perros en Adopción</b> </a> </p>
                      </div>
                   </li>
+                  <?php
+                     $contador = 2;
+                     $preguntas = Pregunta::All();
+                     foreach ($preguntas as $row => $item) {
+                  ?>
                   <li>
+                     <a data-bs-toggle="collapse" class="collapsed" data-bs-target="#faq<?php echo $contador ?>">
+                     <!-- ¿Cómo y dónde puedo contactarlos para adoptar? -->
+                     <?php echo $item->pregunta ?>
+                     <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i>
+                     </a>
+                     <div id="faq<?php echo $contador ?>" class="collapse" data-bs-parent=".faq-list">
+                        <p>
+                           <?php echo $item->respuesta ?>
+                           <!-- Todos los sábados hacemos Encuentros Adopteros de 15:00 - 18:00 horas, en Plaza TG. Emilio Mitre, Av. Pueyrredón y Av. Las Heras (CABA).
+                           <br>
+                           <br> También puedes llamarnos al: +54 11 4089-3717 (NO WHATSAPP) o contactarnos a través de nuestro email: adopterosargentina@gmail.com  -->
+                        </p>
+                     </div>
+                  </li>
+                  <?php
+                     $contador++;
+                     }
+                     $contador = 0;
+                  ?>
+                  <!-- <li>
                      <a data-bs-toggle="collapse" class="collapsed" data-bs-target="#faq3">
                      ¿Cómo puedo ser parte de Adopteros y contribuir?
                      <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i>
@@ -276,7 +290,7 @@
                      <div id="faq3" class="collapse" data-bs-parent=".faq-list">
                         <p> Adoptando, difundiendo, creando conciencia, transitando, siendo voluntario/a, participando, realizando una donación. </p>
                      </div>
-                  </li>
+                  </li> -->
                </ul>
             </div>
          </section>

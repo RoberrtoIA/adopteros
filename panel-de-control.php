@@ -8,6 +8,8 @@ require_once('assets/Model/donacion.php');
 require_once('assets/vendor/php/panel_de_control_crud_donaciones.php');
 require_once('assets/Model/informacion_contacto.php');
 require_once('assets/vendor/php/panel_de_control_informacion_contacto.php');
+require_once('assets/vendor/php/panel_de_control_crud_preguntas.php');
+
 ?>
 
 <!DOCTYPE html>
@@ -78,6 +80,15 @@ require_once('assets/vendor/php/panel_de_control_informacion_contacto.php');
                     confirmButtonText: 'Continuar', confirmButtonColor: '#1a8e32',});              
                   </script>";
    }
+
+      # Pregunta registrada con exito
+      if ($pregunta_registrada_con_exito == true) {
+         echo "<script> Swal.fire({icon:'success',               
+                       title:'¡Completado!',                
+                       text:'Nueva pregunta agregada',                
+                       confirmButtonText: 'Continuar', confirmButtonColor: '#1a8e32',});              
+                     </script>";
+      }
 
    # Usuario registrado con éxito
    else if ($usuario_registrado_con_exito == true) {
@@ -206,21 +217,28 @@ require_once('assets/vendor/php/panel_de_control_informacion_contacto.php');
                   </a>
                </li>
 
-               <!-- 7. Gestión - Landing Page -->
+               <!-- 7. Gestión - Inicio -->
                <li class="nav-item col-3" style="margin-top:16px">
                   <a class="nav-link" id="a5" data-bs-toggle="tab" data-bs-target="#gestion_landing">
-                     <h4 class="d-none d-lg-block">Landing Page</h4>
+                     <h4 class="d-none d-lg-block">Portada</h4>
                   </a>
                </li>
 
-               <!-- 8. Gestión - ¿Cómo contribuir? -->
+               <!-- 8. Gestión - También necesitamos -->
                <li class="nav-item col-3" style="margin-top:16px">
                   <a class="nav-link" id="a5" data-bs-toggle="tab" data-bs-target="#gestion_adopcion_cuidados">
-                     <h4 class="d-none d-lg-block">¿Cómo contribuir?</h4>
+                     <h4 class="d-none d-lg-block">También necesitamos</h4>
                   </a>
                </li>
 
-               <!-- 9. Gestión - FAQ -->
+               <!-- 9. Gestión - Requisitos para adoptar -->
+               <li class="nav-item col-3" style="margin-top:16px">
+                  <a class="nav-link" id="a5" data-bs-toggle="tab" data-bs-target="#gestion_adoptar">
+                     <h4 class="d-none d-lg-block">Requisitos para Adoptar</h4>
+                  </a>
+               </li>
+
+               <!-- 10. Gestión - FAQ -->
                <li class="nav-item col-3" style="margin-top:16px">
                   <a class="nav-link" id="a5" data-bs-toggle="tab" data-bs-target="#gestion_faq">
                      <h4 class="d-none d-lg-block">FAQ</h4>
@@ -366,7 +384,7 @@ require_once('assets/vendor/php/panel_de_control_informacion_contacto.php');
                                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                           <a href="EditPuppie.php?id=<?php echo $item->id; ?>" type="button" name="btn-" class=""><img src="assets/img/edit.png" alt="edit_button" height="35px"></a>
                                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                          <a href="assets/vendor/php/panel_de_control_delete.php?action=borrar&id=<?php echo $item->id; ?>" onclick="confirm(" Are you sure you want to delete")" type="submit" class="" name="btnBorrar"><img style="transform: translate(0%, 10%);" src="assets/img/delete.png" alt="delete_button" height="30px"></a>
+                                          <a href="assets/vendor/php/panel_de_control_delete.php?action=borrar&id=<?php echo $item->id; ?>" onclick="confirm('¿Estas segur@?')" type="submit" class="" name="btnBorrar"><img style="transform: translate(0%, 10%);" src="assets/img/delete.png" alt="delete_button" height="30px"></a>
                                        </div>
                                     </td>
                                  </tr>
@@ -645,7 +663,7 @@ require_once('assets/vendor/php/panel_de_control_informacion_contacto.php');
                   </div>
                </div>
 
-               <!-- 7. Gestión - Landing Page -->
+               <!-- 7. Gestión - Inicio -->
 
                <div class="tab-pane" id="gestion_landing">
                   <div class="container" style="padding-top: 40px; padding-bottom: 20px;">
@@ -654,7 +672,7 @@ require_once('assets/vendor/php/panel_de_control_informacion_contacto.php');
                         <h5 style="margin-top:-16px; margin-left: -16px; margin-right: -16px;
                               padding-bottom:15px; padding-top: 15px; padding-left:30px; 
                               background-color: #1b1b1b; color:white;">
-                           Configuración de Landing Page
+                           Configuración de Portada
                         </h5>
                         <br>
                         <div class="row" style="padding-left: 30px">
@@ -701,7 +719,6 @@ Los curamos, les damos atención veterinaria y luego buscamos que sean adoptados
                            </div>
                         </div>
                   </div>
-                  </form>
 
                </div>
 
@@ -718,17 +735,13 @@ Los curamos, les damos atención veterinaria y luego buscamos que sean adoptados
                         </h5>
                         <br>
                         <div class="row" style="padding-left: 30px">
-                           <div class="col-xl-8 mb-8">
-                              <label style="padding-bottom: 10px;">Parrafo de contribución:</label>
-                              <textarea type="text" style="height: 10vh;" name="txt_telefono" class="form-control text-center" placeholder="Parrafo/Subtitulo" maxlength="500" value="Adopta un amigo.">Adopta un amigo.</textarea>
-                           </div>
 
                            <div class="col-xl-8 mb-8">
                               <label style="padding-bottom: 10px; padding-top: 15px;">También necesitamos:</label>
                               <table class="table table-striped table-bordered" style="text-align: center;">
                                  <thead>
                                     <tr>
-                                    <!-- <th>Texto</th> -->
+                                       <!-- <th>Texto</th> -->
                                     </tr>
                                  </thead>
                                  <tbody>
@@ -738,7 +751,7 @@ Los curamos, les damos atención veterinaria y luego buscamos que sean adoptados
                            </div>
 
                            <div class="col-xl-2 mb-2">
-                           <button type="submit" name="btn_agregar_item_contribuir" class="btn login-btn" style="margin-top: 52px; background-color:#1b1b1b">
+                              <button type="submit" name="btn_agregar_item_contribuir" class="btn login-btn" style="margin-top: 52px; background-color:#1b1b1b">
                                  Agregar item
                               </button><br>
                            </div>
@@ -754,29 +767,29 @@ Los curamos, les damos atención veterinaria y luego buscamos que sean adoptados
 
                </div>
 
-               <!-- 9. Gestión - FAQ -->
+               <!-- 9. Gestión - Requisitos para adoptar -->
 
-               <div class="tab-pane" id="gestion_faq">
+               <div class="tab-pane" id="gestion_adoptar">
                   <div class="container" style="padding-top: 40px; padding-bottom: 20px;">
 
                      <form class="shadow p-3 mb-5 bg-white rounded" action="" method="POST" style="padding: 30px 30px;">
                         <h5 style="margin-top:-16px; margin-left: -16px; margin-right: -16px;
                               padding-bottom:15px; padding-top: 15px; padding-left:30px; 
                               background-color: #1b1b1b; color:white;">
-                           Adopción | Cuidados
+                           Requisitos
                         </h5>
                         <br>
                         <div class="row" style="padding-left: 30px">
                            <div class="col-xl-10 mb-10">
-                              <label style="padding-bottom: 10px;">Pregunta:</label>
-                              <input type="text" name="txt_telefono" class="form-control text-center" placeholder="Pregunta" maxlength="200" value="¡Adopta a tu nuevo mejor amigo hoy!">
+                              <label style="padding-bottom: 10px;">Titulo:</label>
+                              <input type="text" name="txt_telefono" class="form-control text-center" placeholder="Entrevistas" maxlength="200">
                            </div>
                            <div class="col-xl-10 mb-10">
-                              <label style="padding-bottom: 10px; padding-top: 15px;">Misión:</label>
-                              <textarea type="text" style="height: 10vh;" name="txt_telefono" class="form-control text-center" placeholder="Mision" maxlength="500" value="Ver perros en adopción"></textarea>
+                              <label style="padding-bottom: 10px; padding-top: 15px;">Sub-texto:</label>
+                              <input type="text" style="height: 10vh;" name="txt_telefono" class="form-control text-center" placeholder="Subtexto" maxlength="500"></input>
                            </div>
                            <div class="col-xl-2 mb-2">
-                           <button type="submit" name="btn_agregar_item_contribuir" class="btn login-btn" style="margin-top: 52px; background-color:#1b1b1b">
+                              <button type="submit" name="btn_agregar_item_contribuir" class="btn login-btn" style="margin-top: 52px; background-color:#1b1b1b">
                                  Agregar FAQ
                               </button><br>
                            </div>
@@ -785,6 +798,72 @@ Los curamos, les damos atención veterinaria y luego buscamos que sean adoptados
                   </form>
 
                </div>
+
+               <!-- 10. Gestión - FAQ -->
+
+               <div class="tab-pane" id="gestion_faq">
+                  <div class="container" style="padding-top: 40px; padding-bottom: 20px;">
+                     <form class="shadow p-3 mb-5 bg-white rounded" action="" method="POST" style="padding: 30px 30px;">
+
+                        <h5 style="margin-top:-16px; margin-left: -16px; margin-right: -16px;
+                              padding-bottom:15px; padding-top: 15px; padding-left:30px; 
+                              background-color: #1b1b1b; color:white;">
+                           Preguntas frecuentes (FAQ)
+                        </h5>
+                        <br>
+                        <div class="row" style="padding-left: 30px">
+                           <table class="table table-striped table-bordered" style="text-align: center;">
+                              <thead>
+                                 <tr>
+                                    <th>ID</th>
+                                    <th>Pregunta</th>
+                                    <th>Respuesta</th>
+                                    <th>Acciones</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <?php
+                                 $tablaPreguntas = Pregunta::All();
+                                 foreach ($tablaPreguntas as $row => $item) {
+                                 ?>
+                                 <tr>
+                                    <td scope="row" style="vertical-align: middle;">
+                                    <?php echo $item->id ?>
+                                    </td>
+                                    <td style="vertical-align: middle;">
+                                    <?php echo $item->pregunta ?>
+                                    </td>
+                                    <td style="vertical-align: middle;">
+                                    <?php echo $item->respuesta ?>
+                                    </td>
+                                    <td style="vertical-align: middle;">
+                                    <a href="assets/vendor/php/panel_de_control_crud_preguntas.php?action=borrar&id=<?php echo $item->id; ?>" onclick="confirm('¿Estas segur@?')" type="submit" class="" name="btnBorrar"><img style="transform: translate(0%, 10%);" src="assets/img/delete.png" alt="delete_button" height="30px"></a>
+                                    </td>
+                                 </tr>
+                                 <?php
+                                    } 
+                                 ?>
+                              </tbody>
+                           </table>
+                           <div class="col-xl-10 mb-10">
+                              <label style="padding-bottom: 10px;">Pregunta:</label>
+                              <input type="text" name="txt_pregunta" class="form-control text-center" placeholder="¿Pregunta?" maxlength="1000">
+                           </div>
+                           <div class="col-xl-10 mb-10">
+                              <label style="padding-bottom: 10px; padding-top: 15px;">Respuesta:</label>
+                              <textarea type="text" style="height: 10vh;" name="txt_respuesta" class="form-control text-center" placeholder="Respuesta" maxlength="2000"></textarea>
+                           </div>
+                           <div class="col-xl-2 mb-2">
+                              <button type="submit" name="btn_agregar_faq" class="btn login-btn" style="margin-top: 52px; background-color:#1b1b1b">
+                                 Agregar FAQ
+                              </button><br>
+                           </div>
+                        </div>
+                  </div>
+                  </form>
+
+               </div>
+
             </div>
          </div>
          </div>
@@ -851,12 +930,24 @@ Los curamos, les damos atención veterinaria y luego buscamos que sean adoptados
    <!-- Add Dog -->
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
    <div class="floating-container">
-      <div class="floating-button" id="my-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</div>
+      <div class="floating-button" id="my-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><img src="assets/icons/output-onlinepngtools.png" height="30px" alt="boton-agregar-perro" style="filter: invert(100%) brightness(100%) contrast(100%);"></div>
    </div>
+
+   <!-- Add Pregunta
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" >
+   <div class="floating-container">
+      <div class="floating-button" id="my-button-add-faq" data-bs-toggle="modal" data-bs-target="#staticBackdrop2"><img src="assets/icons/output-onlinepngtools.png" height="30px" alt="boton-agregar-perro" style="filter: invert(100%) brightness(100%) contrast(100%);"></div>
+   </div> -->
+   <!-- Add Dog
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <div class="floating-container">
+      <div class="floating-button" id="my-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</div>
+   </div> -->
 
 
 
    <!-- Modal -->
+   <?php require_once('assets/modals/add-faq.html'); ?>
    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg modal-dialog-centered">
          <div class="modal-content" style="height: 80px; margin-bottom: 40%;">
