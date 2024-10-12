@@ -184,6 +184,8 @@
                <div class="row">
                   <?php  
                      $contador = 1;
+                     $contador2 = -1;
+                     $claseFill = "-fill";
                      $fill = true;
                      $requisitos = Requisito::All();
                      foreach ($requisitos as $row => $item) {
@@ -199,21 +201,28 @@
 
                   <?php
                         } else {
-                           if ($fill == true) {
+                           if ($contador2 == 2) {
+                              $contador2 = 0;
+                              if ($claseFill == '-fill') {
+                                 $claseFill = '';
+                              } else {
+                                 $claseFill = '-fill';
+                              }
+                           }
 
                            
                         ?>
                   <div class="col-md-6 mt-4 mt-md-0">
                      <div class="icon-box" data-aos="fade-up" data-aos-delay="<?php echo $contador ?>00">
-                        <i class="bi bi-check-square-fill"></i>
+                        <i class="bi bi-check-square<?php echo $claseFill; ?>"></i>
                         <h4><?php echo $item->texto ?></h4>
                         <p><?php echo $item->subtexto ?></p>
                      </div>
                   </div>
                         <?php 
 
-                           }
                         }
+                  $contador2++;
                   $contador++;
                      }
                   ?>
