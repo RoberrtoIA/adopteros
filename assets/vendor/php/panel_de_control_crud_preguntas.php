@@ -9,7 +9,7 @@
 		$respuesta = $_POST['txt_respuesta'];
 		
 		Pregunta::Insert($pregunta, $respuesta);
-		$donacion_registrado_con_exito = true;
+		$pregunta_registrada_con_exito = true;
 	}
 
     if (isset($_GET["action"]) && $_GET["action"] == 'borrar') {

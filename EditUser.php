@@ -146,7 +146,7 @@
          <div class="container d-md-flex py-4">
             <div class="me-md-auto text-center text-md-start">
                <div class="copyright" style="padding-top: 10px;">
-                  &copy; Copyright <strong><span>Adopteros Argentina</span></strong>. 2022 All Rights Reserved
+                  &copy; Copyright <strong><span>Adopteros Argentina</span></strong>. <?= date('Y'); ?> All Rights Reserved
                </div>
             </div>
          </div>

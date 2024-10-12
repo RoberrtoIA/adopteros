@@ -9,6 +9,7 @@ require_once('assets/vendor/php/panel_de_control_crud_donaciones.php');
 require_once('assets/Model/informacion_contacto.php');
 require_once('assets/vendor/php/panel_de_control_informacion_contacto.php');
 require_once('assets/vendor/php/panel_de_control_crud_preguntas.php');
+require_once('assets/vendor/php/panel_de_control_crud_requisitos.php');
 
 ?>
 
@@ -86,6 +87,15 @@ require_once('assets/vendor/php/panel_de_control_crud_preguntas.php');
          echo "<script> Swal.fire({icon:'success',               
                        title:'¡Completado!',                
                        text:'Nueva pregunta agregada',                
+                       confirmButtonText: 'Continuar', confirmButtonColor: '#1a8e32',});              
+                     </script>";
+      }
+
+      # Requisito registrado con exito
+      if ($requisito_registrado_con_exito == true) {
+         echo "<script> Swal.fire({icon:'success',               
+                       title:'¡Completado!',                
+                       text:'Nuevo requisito agregado',                
                        confirmButtonText: 'Continuar', confirmButtonColor: '#1a8e32',});              
                      </script>";
       }
@@ -784,18 +794,20 @@ Los curamos, les damos atención veterinaria y luego buscamos que sean adoptados
                               </thead>
                               <tbody>
                                  <?php
-                                 $tablaPreguntas = Pregunta::All();
-                                 foreach ($tablaPreguntas as $row => $item) {
+                                 $tablaRequisitos = Requisito::All();
+                                 foreach ($tablaRequisitos as $row => $item) {
                                  ?>
                                  <tr>
                                     <td style="vertical-align: middle;">
-                                    <?php echo $item->pregunta ?>
+                                    <?php echo $item->texto ?>
                                     </td>
                                     <td style="vertical-align: middle;">
-                                    <?php echo $item->respuesta ?>
+                                    <?php echo $item->subtexto ?>
                                     </td>
                                     <td style="vertical-align: middle;">
-                                    <a href="assets/vendor/php/panel_de_control_crud_preguntas.php?action=borrar&id=<?php echo $item->id; ?>" onclick="confirm('¿Estas segur@?')" type="submit" class="" name="btnBorrar"><img style="transform: translate(0%, 10%);" src="assets/img/delete.png" alt="delete_button" height="30px"></a>
+                                    <a href="EditRequisito.php?action=editar&id=<?php echo $item->id; ?>" type="button" name="btn-" class=""><img src="assets/img/edit.png" alt="edit_button_requisito" height="35px"></a>
+                                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a href="assets/vendor/php/panel_de_control_crud_requisitos.php?action=borrar&id=<?php echo $item->id; ?>" onclick="confirm('¿Estas segur@?')" type="submit" class="" name="btnBorrar"><img style="transform: translate(0%, 10%);" src="assets/img/delete.png" alt="delete_button" height="30px"></a>
                                     </td>
                                  </tr>
                                  <?php
@@ -804,15 +816,15 @@ Los curamos, les damos atención veterinaria y luego buscamos que sean adoptados
                               </tbody>
                            </table>
                            <div class="col-xl-10 mb-10">
-                              <label style="padding-bottom: 10px;">Titulo:</label>
-                              <input type="text" name="txt_telefono" class="form-control text-center" placeholder="Entrevistas" maxlength="200">
+                              <label style="padding-bottom: 10px;">Texto:</label>
+                              <input type="text" name="txt_texto" class="form-control text-center" placeholder="Texto" maxlength="200">
                            </div>
                            <div class="col-xl-10 mb-10">
                               <label style="padding-bottom: 10px; padding-top: 15px;">Sub-texto:</label>
-                              <input type="text" style="height: 10vh;" name="txt_telefono" class="form-control text-center" placeholder="Subtexto" maxlength="500"></input>
+                              <input type="text" style="height: 10vh;" name="txt_subtexto" class="form-control text-center" placeholder="Sub-texto" maxlength="1000"></input>
                            </div>
                            <div class="col-xl-2 mb-2">
-                              <button type="submit" name="btn_agregar_item_contribuir" class="btn login-btn" style="margin-top: 52px; background-color:#1b1b1b">
+                              <button type="submit" name="btn_agregar_requisito" class="btn login-btn" style="margin-top: 52px; background-color:#1b1b1b">
                                  Agregar requisito
                               </button><br>
                            </div>

@@ -2,6 +2,7 @@
    require_once('assets/Connection/database.php');   
    require_once('assets/Model/informacion_contacto.php');
    require_once('assets/Model/pregunta.php');
+   require_once('assets/Model/requisito.php');
 ?>
 
 <!DOCTYPE html>
@@ -181,8 +182,42 @@
                   </p>
                </div>
                <div class="row">
-                  
+                  <?php  
+                     $contador = 1;
+                     $fill = true;
+                     $requisitos = Requisito::All();
+                     foreach ($requisitos as $row => $item) {
+                        if ($contador == 1) {
+                  ?>
                   <div class="col-md-6">
+                     <div class="icon-box" data-aos="fade-up" data-aos-delay="<?php echo $contador ?>00">
+                        <i class="bi bi-check-square"></i>
+                        <h4><?php echo $item->texto ?></h4>
+                        <p><?php echo $item->subtexto ?></p>
+                     </div>
+                  </div>
+
+                  <?php
+                        } else {
+                           if ($fill == true) {
+
+                           
+                        ?>
+                  <div class="col-md-6 mt-4 mt-md-0">
+                     <div class="icon-box" data-aos="fade-up" data-aos-delay="<?php echo $contador ?>00">
+                        <i class="bi bi-check-square-fill"></i>
+                        <h4><?php echo $item->texto ?></h4>
+                        <p><?php echo $item->subtexto ?></p>
+                     </div>
+                  </div>
+                        <?php 
+
+                           }
+                        }
+                  $contador++;
+                     }
+                  ?>
+                  <!-- <div class="col-md-6">
                      <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
                         <i class="bi bi-check-square"></i>
                         <h4>Entrevistas</h4>
@@ -229,8 +264,9 @@
                         <p>Todas las personas del hogar deben estar de acuerdo</p>
                      </div>
                   </div>
-               </div>
+               </div> -->
 
+               <!-- Esta queda por defecto -->
                <div class="col-md-12 mt-md-0">
                   <div class="icon-box" data-aos="fade-up" data-aos-delay="600">
                      <i class="bi bi-house-fill"></i>

@@ -9,7 +9,7 @@ require_once('assets/vendor/php/panel_de_control_auth.php');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar datos de las Donaciones</title>
+    <title>Editar Requisitos de adopcion</title>
     <link href="assets/img/icon.png" rel="icon">
 
     <!-- Vendor Files -->
@@ -53,7 +53,7 @@ require_once('assets/vendor/php/panel_de_control_auth.php');
                         <div class="content">
                             <h3>Edición de datos</h3>
                             <p>
-                                Esta es la seccion de paneles de donaciones que se mostraran en la pagina<br>
+                                Esta es la seccion de paneles de los requisitos de adopción que se mostraran en la pagina<br>
                             </p>
                             <a href="panel-de-control.php" class="about-btn">
                                 <span>Regresar a Panel de control</span> <i class="bx bx-chevron-right"></i>
@@ -95,50 +95,49 @@ require_once('assets/vendor/php/panel_de_control_auth.php');
                 <div style="padding-top: 20px; padding-bottom: 0px;">
 
                     <?php
-                    require_once("assets/Model/donacion.php");
+                    require_once("assets/Model/requisito.php");
                     require_once("assets/Connection/database.php");
-                    require_once("assets/vendor/php/editDonationControl.php");
+                    require_once("assets/vendor/php/editRequisitoControl.php");
 
                     $id = $_GET['id'];
-                    $donacion = Donacion::GetById($id);
+                    $requisito = Requisito::GetById($id);
                     ?>
-
                     <form class="shadow p-3 mb-5 bg-white rounded" action="" method="POST" style="padding: 30px 30px;" enctype="multipart/form-data">
                         <h5 style="margin-top:-16px; margin-left: -16px; margin-right: -16px;
                             padding-bottom:15px; padding-top: 15px; padding-left:30px; 
                             background-color: #1b1b1b; color:white;">
-                            Detalles de Carta de Donación
+                            Detalles de la sección del requisito
                         </h5>
                         <br>
                         <div class="row" style="padding-left: 30px">
                             <div class="col-xl-1 mb-1">
                                 <label style="padding-bottom: 10px;">ID:</label>
-                                <input type="text" class="form-control text-center" value="<?php echo $donacion->id ?>" placeholder="ID..." disabled>
+                                <input type="text" class="form-control text-center" value="<?php echo $requisito->id ?>" placeholder="ID..." disabled>
                             </div>
                             <div class="col-xl-5 mb-5">
-                                <label style="padding-bottom: 10px;">URL:</label>
-                                <input type="hidden" value="<?php echo $donacion->id ?>" name="id">
-                                <input type="text" name="txt_url" maxlength="24" class="form-control text-center" value="<?php echo $donacion->url ?>" placeholder="Nuevo enlace..." required>
+                                <label style="padding-bottom: 10px;">Texto:</label>
+                                <input type="hidden" value="<?php echo $requisito->id ?>" name="id">
+                                <input type="text" name="txt_texto" maxlength="255" class="form-control text-center" value="<?php echo $requisito->texto ?>" placeholder="Texto" required>
                             </div>
                             <div class="col-xl-3 mb-3">
-                                <label style="padding-bottom: 10px;">Monto:</label>
-                                <input type="text" name="txt_monto" class="form-control text-center" value="<?php echo $donacion->monto ?>" placeholder="0" required>
+                                <label style="padding-bottom: 10px;">Subtexto:</label>
+                                <input type="text" name="txt_subtexto" maxlength="2000" class="form-control text-center" value="<?php echo $requisito->subtexto ?>" placeholder="Subtexto" required>
                             </div>
                             <div class="col-xl-3 mb-3">
-                                <button type="submit" name="btn_actualizar_donacion" class="btn login-btn" value="saveurl" style="margin-top: 32px;">
+                                <button type="submit" name="btn_actualizar_requisito" class="btn login-btn" value="saveurl" style="margin-top: 32px;">
                                     Actualizar datos y publicar
                                 </button><br>
                             </div>
                         </div>
-                        <div class="row" style="padding-left: 30px">
-                            <span style="font-style: italic;">Asegurate que el enlace es valido antes de ingresarlo, 
-                            es el que redireccionará a los usuarios cuando toquen su slide de donación :)</span>
-                        </div>
+                        <!-- <div class="row" style="padding-left: 30px">
+                            <span style="font-style: italic;">:)</span>
+                        </div> -->
                     </form>
 
                 </div>
             </div>
         </section>
+        <br><br><br><br><br><br><br><br>
     </main>
 
     <!-- Footer -->

@@ -56,3 +56,63 @@ BEGIN
     VALUES (default, _pregunta, _respuesta);
 END//
 DELIMITER ;
+
+
+DELIMITER //
+CREATE PROCEDURE `pregunta_delete`(IN _id INT)
+BEGIN  
+    DELETE FROM preguntas WHERE id = _id;
+END//
+DELIMITER ; 
+
+
+CREATE TABLE requisitos (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  texto VARCHAR(255) NOT NULL,
+  subtexto TEXT NOT NULL
+);
+
+INSERT INTO requisitos (id, texto, subtexto)
+VALUES (default, "Entrevistas", "Realizar entrevistas previas"),
+(default, "Mayoría de edad", "Ser mayor de 21 años"),
+(default, "Identificación", "DNI y servicio a nombre del adoptante constando domicilio"),
+(default, "Zona de adopción", "Solo se da adopción en CABA"),
+(default, "Adopción personal", "No se entregan perros para terceras persona"),
+(default, "Consentimiento", "Todas las personas del hogar deben estar de acuerdo");
+
+
+DELIMITER //
+CREATE PROCEDURE `requisito_insert`(
+IN _texto VARCHAR(255), 
+IN _subtexto TEXT
+)
+BEGIN  
+    INSERT INTO requisitos(id, texto, subtexto)
+    VALUES (default, _texto, _subtexto);
+END//
+DELIMITER ;
+
+
+DELIMITER //
+CREATE PROCEDURE `requisito_update`(
+	IN _id INT,
+	IN _texto VARCHAR(255), 
+	IN _subtexto TEXT
+)
+BEGIN  
+    UPDATE requisitos
+    SET 
+	 texto = _texto, 
+    subtexto = _subtexto
+    WHERE id = _id;
+END//
+DELIMITER ;
+
+
+DELIMITER //
+CREATE PROCEDURE `requisito_delete`(IN _id INT)
+BEGIN  
+    DELETE FROM requisitos WHERE id = _id;
+END//
+DELIMITER ; 
+
