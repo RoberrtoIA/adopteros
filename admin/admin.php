@@ -50,7 +50,7 @@ require_once(__DIR__ . '../../assets/vendor/php/panel_de_control_auth.php');
 
       <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="http://localhost/adopteros/panel-de-control.php">
+        <a class="nav-link" data-toggle="dropdown" href="../panel-de-control.php">
           <span class="badge badge-warning navbar-badge" style="font-size: x-large;">Regresar al Panel de Control</span>
         </a>
       </li>
@@ -72,8 +72,8 @@ require_once(__DIR__ . '../../assets/vendor/php/panel_de_control_auth.php');
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="Adopteros_Argentina" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <a href="#" class="brand-link">
+      <img src="dist/img/AdminLTELogo.png" alt="Adopteros_Argentina_LOGO" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Adopteros Argentina</span>
     </a>
 
@@ -104,10 +104,10 @@ require_once(__DIR__ . '../../assets/vendor/php/panel_de_control_auth.php');
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/mailbox.html" class="nav-link">
+            <a href="pages/mailbox.php" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Mail
+                eMail
                 <span class="right badge badge-danger">En construcción</span>
               </p>
             </a>
@@ -130,8 +130,8 @@ require_once(__DIR__ . '../../assets/vendor/php/panel_de_control_auth.php');
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard</li>
+              <li class="breadcrumb-item"><a href="#">Administración</a></li>
+              <li class="breadcrumb-item active">Pagina en construcción</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
