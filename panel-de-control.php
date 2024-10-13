@@ -10,6 +10,7 @@ require_once('assets/Model/informacion_contacto.php');
 require_once('assets/vendor/php/panel_de_control_informacion_contacto.php');
 require_once('assets/vendor/php/panel_de_control_crud_preguntas.php');
 require_once('assets/vendor/php/panel_de_control_crud_requisitos.php');
+require_once('assets/vendor/php/panel_de_control_crud_contribuciones.php');
 
 ?>
 
@@ -44,15 +45,22 @@ require_once('assets/vendor/php/panel_de_control_crud_requisitos.php');
 
    <!-- Header -->
    <header id="header" class="fixed-top d-flex align-items-center">
-      <div class="container d-flex align-items-center">
+   <div class="container d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center">
          <img src="assets/img/logo_icono.png" style="width: 45px; padding-bottom:6px;">
          <a href="panel-de-control.php" class="logo me-auto"><img src="assets/img/logo_texto.png"></a>
+      </div>
+      <div class="d-flex align-items-center">
+         <form action="admin/admin.php" method="GET">
+            <button class="get-started-btn" type="submit" name="btn_admin" value="true" style="border:none;">ADMIN</button>
+         </form>
          <form action="" method="POST">
-            <button class="get-started-btn" type="submit" name="btn_cerrar_sesion" style="border:none;">Cerrar
-               sesión</button>
+            <button class="get-started-btn" type="submit" name="btn_cerrar_sesion" style="border:none;">Cerrar sesión</button>
          </form>
       </div>
-   </header>
+   </div>
+</header>
+
 
    <?php
    # Perro registrado con éxito
@@ -96,6 +104,15 @@ require_once('assets/vendor/php/panel_de_control_crud_requisitos.php');
          echo "<script> Swal.fire({icon:'success',               
                        title:'¡Completado!',                
                        text:'Nuevo requisito agregado',                
+                       confirmButtonText: 'Continuar', confirmButtonColor: '#1a8e32',});              
+                     </script>";
+      }
+
+      # Contribucion registrado con exito
+      if ($contribucion_registrada_con_exito == true) {
+         echo "<script> Swal.fire({icon:'success',               
+                       title:'¡Completado!',                
+                       text:'Nueva contribución agregada',                
                        confirmButtonText: 'Continuar', confirmButtonColor: '#1a8e32',});              
                      </script>";
       }
@@ -236,7 +253,7 @@ require_once('assets/vendor/php/panel_de_control_crud_requisitos.php');
 
                <!-- 8. Gestión - También necesitamos -->
                <li class="nav-item col-3" style="margin-top:16px">
-                  <a class="nav-link" id="a5" data-bs-toggle="tab" data-bs-target="#gestion_adopcion_cuidados">
+                  <a class="nav-link" id="a5" data-bs-toggle="tab" data-bs-target="#gestion_contribuciones">
                      <h4 class="d-none d-lg-block">También necesitamos</h4>
                   </a>
                </li>
@@ -729,44 +746,60 @@ Los curamos, les damos atención veterinaria y luego buscamos que sean adoptados
                            </div>
                         </div>
                   </div>
-
+                  </form>
                </div>
 
-               <!-- 8. Gestión - Adopción y cuidados -->
+               <!-- 8. Gestión - Contribuciones -->
 
-               <div class="tab-pane" id="gestion_adopcion_cuidados">
+               <div class="tab-pane" id="gestion_contribuciones">
                   <div class="container" style="padding-top: 40px; padding-bottom: 20px;">
 
                      <form class="shadow p-3 mb-5 bg-white rounded" action="" method="POST" style="padding: 30px 30px;">
                         <h5 style="margin-top:-16px; margin-left: -16px; margin-right: -16px;
                               padding-bottom:15px; padding-top: 15px; padding-left:30px; 
                               background-color: #1b1b1b; color:white;">
-                           Adopción | Cuidados
+                           Requisitos
                         </h5>
                         <br>
                         <div class="row" style="padding-left: 30px">
-
-                           <div class="col-xl-8 mb-8">
-                              <label style="padding-bottom: 10px; padding-top: 15px;">También necesitamos:</label>
-                              <table class="table table-striped table-bordered" style="text-align: center;">
-                                 <thead>
-                                    <tr>
-                                       <!-- <th>Texto</th> -->
-                                    </tr>
-                                 </thead>
-                                 <tbody>
-                                    <td style="vertical-align: middle;">Balanceado de buena calidad para perros adultos y cachorros.</td>
-                                 </tbody>
-                              </table>
+                        <table class="table table-striped table-bordered" style="text-align: center;">
+                              <thead>
+                                 <tr>
+                                    <th>Contribución</th>
+                                    <th>Acciones</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <?php
+                                 $tablaContribuciones = Contribucion::All();
+                                 foreach ($tablaContribuciones as $row => $item) {
+                                 ?>
+                                 <tr>
+                                    <td style="vertical-align: middle;">
+                                    <?php echo $item->contribucion ?>
+                                    </td>
+                                    <td style="vertical-align: middle;">
+                                    <a href="EditContribucion.php?action=editar&id=<?php echo $item->id; ?>" type="button" name="btn-" class=""><img src="assets/img/edit.png" alt="edit_button_contribucion" height="35px"></a>
+                                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a href="assets/vendor/php/panel_de_control_crud_contribuciones.php?action=borrar&id=<?php echo $item->id; ?>" onclick="confirm('¿Estas segur@?')" type="submit" class="" name="btnBorrar"><img style="transform: translate(0%, 0%);" src="assets/img/delete.png" alt="delete_button" height="30px"></a>
+                                    </td>
+                                 </tr>
+                                 <?php
+                                    } 
+                                 ?>
+                              </tbody>
+                           </table>
+                           <div class="col-xl-10 mb-10">
+                              <label style="padding-bottom: 10px; padding-top: 15px;">Contribución:</label>
+                              <input type="text" style="height: 10vh;" name="txt_contribucion" class="form-control text-center" placeholder="Nos ayudaria muchisimo..." maxlength="1000"></input>
                            </div>
-
                            <div class="col-xl-2 mb-2">
-                              <button type="submit" name="btn_agregar_item_contribuir" class="btn login-btn" style="margin-top: 52px; background-color:#1b1b1b">
-                                 Agregar item
+                              <button type="submit" name="btn_agregar_contribucion" class="btn login-btn" style="margin-top: 52px; background-color:#1b1b1b">
+                                 Agregar contribución
                               </button><br>
                            </div>
                         </div>
-                  </div>
+                     </div>
                   </form>
 
                </div>

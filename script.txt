@@ -132,3 +132,48 @@ BEGIN
 END//
 DELIMITER ; 
 
+
+CREATE TABLE contribuciones (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  contribucion VARCHAR(1000) NOT NULL
+);
+
+
+INSERT INTO contribuciones (id, contribucion)
+VALUES (default, "Balanceado de buena calidad para perros adultos y cachorros."),
+(default, "Pipetas, Antiparasitarios, Curabichera, Platsul."),
+(default, "Medicamentos veterinarios, Abrigos de todos los tamaños,"),
+(DEFAULT, "Mantas, Correas, Collares, Platitos.");
+
+
+DELIMITER //
+CREATE PROCEDURE `contribucion_insert`(
+IN _contribucion VARCHAR(1000)
+)
+BEGIN  
+    INSERT INTO contribuciones(id, contribucion)
+    VALUES (default, _contribucion);
+END//
+DELIMITER ;
+
+
+DELIMITER //
+CREATE PROCEDURE `contribucion_update`(
+	IN _id INT,
+	IN _contribucion VARCHAR(1000)
+)
+BEGIN  
+    UPDATE contribuciones
+    SET 
+	 contribucion = _contribucion
+    WHERE id = _id;
+END//
+DELIMITER ;
+
+
+DELIMITER //
+CREATE PROCEDURE `contribucion_delete`(IN _id INT)
+BEGIN  
+    DELETE FROM contribuciones WHERE id = _id;
+END//
+DELIMITER ; 

@@ -3,6 +3,7 @@
    require_once('assets/Model/informacion_contacto.php');
    require_once('assets/Model/pregunta.php');
    require_once('assets/Model/requisito.php');
+   require_once('assets/Model/contribucion.php');
 ?>
 
 <!DOCTYPE html>
@@ -139,6 +140,9 @@
       <main id="main" style="background-color: #e9e9e9;">
          
          <!-- Adopción y cuidado - ¿Cómo contribuir? -->
+         <?php
+         $contribuciones = Contribucion::All();
+         ?>
          <section id="contribuir" class="tabs" style="padding-top: 100px;">
             <div class="container" data-aos="fade-up">
                <div class="tab-content">
@@ -153,10 +157,19 @@
                            </a> para ir a nuestra página de donación. </p>
                            <p> También necesitamos: </p>
                            <ul>
-                              <li> <i class="ri-check-fill"></i>Balanceado de buena calidad para perros adultos y cachorros.</li>
-                              <li> <i class="ri-check-fill"></i>Pipetas, Antiparasitarios, Curabichera, Platsul.</li>
+                              <?php
+                                 foreach ($contribuciones as $row => $item) {
+                                    # code...
+                                 
+                              ?>
+                              <li> <i class="ri-check-fill"></i><?php echo $item->contribucion ?></li>
+                              <!-- <li> <i class="ri-check-fill"></i>Balanceado de buena calidad para perros adultos y cachorros.</li> -->
+                              <!-- <li> <i class="ri-check-fill"></i>Pipetas, Antiparasitarios, Curabichera, Platsul.</li>
                               <li> <i class="ri-check-fill"></i>Medicamentos veterinarios, Abrigos de todos los tamaños,</li>
-                              <li> <i class="ri-check-fill"></i> Mantas, Correas, Collares, Platitos.</li>
+                              <li> <i class="ri-check-fill"></i> Mantas, Correas, Collares, Platitos.</li> -->
+                              <?php
+                              }
+                              ?>
                            </ul>
                            <p> ¡Tu ayuda significa mucho para nosotros y nuestros perritos! </p>
                         </div>
