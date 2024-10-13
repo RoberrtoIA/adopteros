@@ -872,7 +872,8 @@ Los curamos, les damos atención veterinaria y luego buscamos que sean adoptados
                                     <?php echo $item->respuesta ?>
                                     </td>
                                     <td style="vertical-align: middle;">
-                                    <a href="assets/vendor/php/panel_de_control_crud_preguntas.php?action=borrar&id=<?php echo $item->id; ?>" onclick="confirm('¿Estas segur@?')" type="submit" class="" name="btnBorrar"><img style="transform: translate(0%, 10%);" src="assets/img/delete.png" alt="delete_button" height="30px"></a>
+                                    <a href="EditFaq.php?action=editar&id=<?php echo $item->id; ?>" type="button" name="btn-" class=""><img src="assets/img/edit.png" alt="edit_button_faq" height="35px"></a>
+                                    <a href="assets/vendor/php/panel_de_control_crud_preguntas.php?action=borrar&id=<?php echo $item->id; ?>" onclick="confirm('¿Estas segur@?')" type="submit" class="" name="btnBorrar"><img style="transform: translate(0%, 0%);" src="assets/img/delete.png" alt="delete_button" height="30px"></a>
                                     </td>
                                  </tr>
                                  <?php
