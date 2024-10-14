@@ -4,6 +4,7 @@
    require_once('assets/Model/pregunta.php');
    require_once('assets/Model/requisito.php');
    require_once('assets/Model/contribucion.php');
+   require_once('assets/Model/landing.php');
 ?>
 
 <!DOCTYPE html>
@@ -60,20 +61,23 @@
       </header>
 
       <!-- Hero Section -->
+      <?php
+         $landing = Landing::GetAll();
+      ?>
       <section id="hero" class="d-flex align-items-center">
          <div class="container" data-aos="zoom-out" data-aos-delay="100">
             <div class="row">
                <div class="col-xl-6">
-                  <h1>¡Adopta a tu nuevo mejor amigo hoy!</h1>
+                  <h1><?= $landing['titulo']; ?></h1>
                   <br>
                   <br>
                   <h2 style="line-height: 35px;">
-                     Adoptá un amigo.
+                  <?= $landing['encabezado']; ?>
                      <br>
-                     Tu amor cambia vidas
+                     <?= $landing['sub_encabezado']; ?>
                   </h2>
                   <a href="perros-en-adopcion.php" class="btn-get-started" target="_blank">
-                     Ver perros en adopción
+                  <?= $landing['btn_ver_perros']; ?>
                   </a> 
                </div>
             </div>
@@ -91,9 +95,13 @@
                   <div class="content col-xl-5 d-flex align-items-stretch">
                      <div class="content">
                         <h3>Acerca de nosotros</h3>
-                        <p> Somos un grupo de personas que rescata, recupera y da en adopción a perros que han sido abandonados o maltratados
-                           <br>
-                           <br> Los curamos, les damos atención veterinaria y luego buscamos que sean adoptados por familias maravillosas. 
+                        <?php
+                        $acerca_de_nosotros = str_replace("\\n", "\n", $landing['acerca_de_nosotros']);
+
+                        // Normalizar los saltos de línea a solo "\n"
+                        $acerca_de_nosotros = str_replace(["\r\n", "\r"], "\n", $acerca_de_nosotros);
+                        ?>
+                        <p> <?php echo nl2br($acerca_de_nosotros); ?>
                         </p>
                         <a href="donar.php" class="about-btn" target="_blank"><span>Donar ahora</span> 
                         <i class="bx bx-chevron-right"></i>
@@ -108,25 +116,25 @@
                            <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
                               <i class="ri-hearts-line"></i>
                               <h4>Misión</h4>
-                              <p> Rescatar, curar, emparchar cuerpitos y almas y encontrarles los adopteros que se merecen. </p>
+                              <p> <?php echo $landing['mision']; ?> </p>
                            </div>
                            
                            <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
                               <i class="ri-first-aid-kit-line"></i>
                               <h4>Atención veterinaria</h4>
-                              <p> Nuestros perritos rescatados reciben toda la atención veterinaria posible , vacunas, castración, lo que necesiten. </p>
+                              <p> <?php echo $landing['atencion_veterinaria']; ?> </p>
                            </div>
                            
                            <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
                               <i class="ri-parent-line"></i>
                               <h4>¿Qué buscamos?</h4>
-                              <p> Que cada uno de nuestros rescatados encuentre a su familia adoptera ideal, donde puedan recibir todo el amor y cuidado que merecen. </p>
+                              <p> <?php echo $landing['que_buscamos']; ?> </p>
                            </div>
                            
                            <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
                               <i class="ri-chat-heart-line"></i>
                               <h4>Nuestro sueño</h4>
-                              <p> Es que algún día no seamos necesarios, ni nosotros ni ningún grupo, porque todos tengan su casa, con amor, respeto y para siempre. </p>
+                              <p> <?php echo $landing['nuestro_suenho']; ?> </p>
                            </div>
                         </div>
                      </div>

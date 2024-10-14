@@ -177,3 +177,56 @@ BEGIN
     DELETE FROM contribuciones WHERE id = _id;
 END//
 DELIMITER ; 
+
+
+CREATE TABLE landing (
+  id INT PRIMARY KEY,
+  titulo VARCHAR(100) NOT NULL,
+  encabezado VARCHAR(100) NOT NULL,
+  sub_encabezado VARCHAR(100) NOT NULL,
+  btn_ver_perros VARCHAR(100) NOT NULL,
+  acerca_de_nosotros VARCHAR(500) NOT NULL,
+  mision VARCHAR(200) NOT NULL,
+  que_buscamos VARCHAR(255) NOT NULL,
+  atencion_veterinaria VARCHAR(255) NOT NULL,
+  nuestro_suenho VARCHAR(255) NOT NULL
+);
+
+
+INSERT INTO landing (id, titulo, encabezado, sub_encabezado, btn_ver_perros, acerca_de_nosotros, mision, que_buscamos, atencion_veterinaria, nuestro_suenho)
+VALUES (1, "¡Adopta a tu nuevo mejor amigo hoy!", "Adoptá un amigo.", "Tu amor cambia vidas", "Ver perros en adopción", 
+"Somos un grupo de personas que rescata, recupera y da en adopción a perros que han sido abandonados o maltratados\\nLos curamos, les damos atención veterinaria y luego buscamos que sean adoptados por familias maravillosas.", 
+"Rescatar, curar, emparchar cuerpitos y almas y encontrarles los adopteros que se merecen.",
+"Que cada uno de nuestros rescatados encuentre a su familia adoptera ideal, donde puedan recibir todo el amor y cuidado que merecen.",
+"Nuestros perritos rescatados reciben toda la atención veterinaria posible , vacunas, castración, lo que necesiten.",
+"Es que algún día no seamos necesarios, ni nosotros ni ningún grupo, porque todos tengan su casa, con amor, respeto y para siempre.");
+
+
+DELIMITER //
+CREATE PROCEDURE `landing_update`(
+	IN _titulo VARCHAR(100), 
+	IN _encabezado VARCHAR(100),
+	IN _sub_encabezado VARCHAR(100),
+	IN _btn_ver_perros VARCHAR(100),
+	IN _acerca_de_nosotros VARCHAR(500),
+	IN _mision VARCHAR(200),
+	IN _que_buscamos VARCHAR(255),
+	IN _atencion_veterinaria VARCHAR(255),
+	IN _nuestro_suenho VARCHAR(255)
+)
+BEGIN  
+    UPDATE landing
+    SET 
+	 titulo = _titulo, 
+    encabezado = _encabezado,
+    sub_encabezado = _sub_encabezado,
+    btn_ver_perros = _btn_ver_perros,
+    acerca_de_nosotros = _acerca_de_nosotros,
+    mision = _mision,
+    que_buscamos = _que_buscamos,
+    atencion_veterinaria = _atencion_veterinaria,
+    nuestro_suenho = _nuestro_suenho
+    WHERE id = 1;
+END//
+DELIMITER ;
+

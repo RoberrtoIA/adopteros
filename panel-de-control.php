@@ -11,6 +11,7 @@ require_once('assets/vendor/php/panel_de_control_informacion_contacto.php');
 require_once('assets/vendor/php/panel_de_control_crud_preguntas.php');
 require_once('assets/vendor/php/panel_de_control_crud_requisitos.php');
 require_once('assets/vendor/php/panel_de_control_crud_contribuciones.php');
+require_once('assets/vendor/php/panel_de_control_landing.php');
 
 ?>
 
@@ -45,21 +46,21 @@ require_once('assets/vendor/php/panel_de_control_crud_contribuciones.php');
 
    <!-- Header -->
    <header id="header" class="fixed-top d-flex align-items-center">
-   <div class="container d-flex align-items-center justify-content-between">
-      <div class="d-flex align-items-center">
-         <img src="assets/img/logo_icono.png" style="width: 45px; padding-bottom:6px;">
-         <a href="panel-de-control.php" class="logo me-auto"><img src="assets/img/logo_texto.png"></a>
+      <div class="container d-flex align-items-center justify-content-between">
+         <div class="d-flex align-items-center">
+            <img src="assets/img/logo_icono.png" style="width: 45px; padding-bottom:6px;">
+            <a href="panel-de-control.php" class="logo me-auto"><img src="assets/img/logo_texto.png"></a>
+         </div>
+         <div class="d-flex align-items-center">
+            <form action="admin/admin.php" method="GET">
+               <button class="get-started-btn" type="submit" name="btn_admin" value="true" style="border:none;">ADMIN</button>
+            </form>
+            <form action="" method="POST">
+               <button class="get-started-btn" type="submit" name="btn_cerrar_sesion" style="border:none;">Cerrar sesión</button>
+            </form>
+         </div>
       </div>
-      <div class="d-flex align-items-center">
-         <form action="admin/admin.php" method="GET">
-            <button class="get-started-btn" type="submit" name="btn_admin" value="true" style="border:none;">ADMIN</button>
-         </form>
-         <form action="" method="POST">
-            <button class="get-started-btn" type="submit" name="btn_cerrar_sesion" style="border:none;">Cerrar sesión</button>
-         </form>
-      </div>
-   </div>
-</header>
+   </header>
 
 
    <?php
@@ -90,32 +91,41 @@ require_once('assets/vendor/php/panel_de_control_crud_contribuciones.php');
                   </script>";
    }
 
-      # Pregunta registrada con exito
-      if ($pregunta_registrada_con_exito == true) {
-         echo "<script> Swal.fire({icon:'success',               
+   # Pregunta registrada con exito
+   if ($pregunta_registrada_con_exito == true) {
+      echo "<script> Swal.fire({icon:'success',               
                        title:'¡Completado!',                
                        text:'Nueva pregunta agregada',                
                        confirmButtonText: 'Continuar', confirmButtonColor: '#1a8e32',});              
                      </script>";
-      }
+   }
 
-      # Requisito registrado con exito
-      if ($requisito_registrado_con_exito == true) {
-         echo "<script> Swal.fire({icon:'success',               
+   # Requisito registrado con exito
+   if ($requisito_registrado_con_exito == true) {
+      echo "<script> Swal.fire({icon:'success',               
                        title:'¡Completado!',                
                        text:'Nuevo requisito agregado',                
                        confirmButtonText: 'Continuar', confirmButtonColor: '#1a8e32',});              
                      </script>";
-      }
+   }
 
-      # Contribucion registrado con exito
-      if ($contribucion_registrada_con_exito == true) {
-         echo "<script> Swal.fire({icon:'success',               
+   # Contribucion registrado con exito
+   if ($contribucion_registrada_con_exito == true) {
+      echo "<script> Swal.fire({icon:'success',               
                        title:'¡Completado!',                
                        text:'Nueva contribución agregada',                
                        confirmButtonText: 'Continuar', confirmButtonColor: '#1a8e32',});              
                      </script>";
-      }
+   }
+
+   # Landing actualizada con exito
+   else if ($landing_editada_con_exito == true) {
+      echo "<script> Swal.fire({icon:'success',               
+                       title:'¡Completado!',                
+                       text:'Landing actualizada',                
+                       confirmButtonText: 'Continuar', confirmButtonColor: '#1a8e32',});              
+                     </script>";
+   }
 
    # Usuario registrado con éxito
    else if ($usuario_registrado_con_exito == true) {
@@ -692,6 +702,9 @@ require_once('assets/vendor/php/panel_de_control_crud_contribuciones.php');
 
                <!-- 7. Gestión - Inicio -->
 
+               <?php
+               $landing = Landing::GetAll();
+               ?>
                <div class="tab-pane" id="gestion_landing">
                   <div class="container" style="padding-top: 40px; padding-bottom: 20px;">
 
@@ -706,41 +719,43 @@ require_once('assets/vendor/php/panel_de_control_crud_contribuciones.php');
                            <h3>Inicio</h3>
                            <div class="col-xl-12 mb-12">
                               <label style="padding-bottom: 10px;">Titulo de bienvenida:</label>
-                              <input type="text" name="txt_telefono" class="form-control text-center" placeholder="Titulo" maxlength="200" value="¡Adopta a tu nuevo mejor amigo hoy!">
+                              <input type="text" name="txt_titulo" class="form-control text-center" placeholder="Titulo" maxlength="100" value="<?= $landing['titulo']; ?>">
                            </div>
                            <div class="col-xl-6 mb-6">
-                              <label style="padding-bottom: 10px; padding-top: 15px;">Subtitulo de bienvenida:</label>
-                              <textarea type="text" style="height: 10vh;" name="txt_telefono" class="form-control text-center" placeholder="Parrafo/Subtitulo" maxlength="500" value="Adopta un amigo.">Adopta un amigo.</textarea>
+                              <label style="padding-bottom: 10px; padding-top: 15px;">Encabezado:</label>
+                              <input type="text" name="txt_encabezado" class="form-control text-center" placeholder="Parrafo/Subtitulo" maxlength="100" value="<?= $landing['encabezado']; ?>"></input>
+                           </div>
+                           <div class="col-xl-6 mb-6">
+                              <label style="padding-bottom: 10px; padding-top: 15px;">Sub encabezado:</label>
+                              <input type="text" name="txt_sub_encabezado" class="form-control text-center" placeholder="Parrafo/Subtitulo" maxlength="100" value="<?= $landing['sub_encabezado']; ?>"></input>
                            </div>
                            <div class="col-xl-4 mb-4">
                               <label style="padding-bottom: 10px; padding-top: 15px;">Botón-Ver perros:</label>
-                              <input type="text" name="txt_telefono" class="form-control text-center" placeholder="Ver perros" maxlength="200" value="Ver perros en adopción">
+                              <input type="text" name="txt_btn_ver_perros" class="form-control text-center" placeholder="Ver perros" maxlength="100" value="<?= $landing['btn_ver_perros']; ?>">
                            </div>
                            <h3 style="padding-top: 20px;">Acerca de nosotros</h3>
                            <div class="col-xl-6 mb-6">
                               <label style="padding-bottom: 10px; padding-top: 15px;">Parrafo *Acerca de nosotros*:</label>
-                              <textarea type="text" style="height: 20vh;" name="txt_telefono" class="form-control text-center" placeholder="Parrafo" maxlength="500" value="">Somos un grupo de personas que rescata, recupera y da en adopción a perros que han sido abandonados o maltratados
-
-Los curamos, les damos atención veterinaria y luego buscamos que sean adoptados por familias maravillosas.</textarea>
+                              <textarea type="text" style="height: 20vh; white-space: pre-wrap;" name="txt_acerca_de_nosotros" class="form-control text-center" placeholder="Parrafo" maxlength="500" value=""><?php echo str_replace("\\n", "\n", $landing['acerca_de_nosotros']); ?></textarea>
                            </div>
                            <div class="col-xl-6 mb-6">
                               <label style="padding-bottom: 10px; padding-top: 15px;">Misión:</label>
-                              <textarea type="text" style="height: 10vh;" name="txt_telefono" class="form-control text-center" placeholder="Mision" maxlength="500" value="Ver perros en adopción"></textarea>
+                              <textarea type="text" style="height: 10vh;" name="txt_mision" class="form-control text-center" placeholder="Mision" maxlength="200" value="Rescatar, curar..."><?php echo str_replace("\\n", "\n", $landing['mision']); ?></textarea>
                            </div>
                            <div class="col-xl-6 mb-6">
                               <label style="padding-bottom: 10px; padding-top: 15px;">¿Qué buscamos?:</label>
-                              <textarea type="text" style="height: 10vh;" name="txt_telefono" class="form-control text-center" placeholder="¿Qué buscamos?" maxlength="500" value="Ver perros en adopción"></textarea>
+                              <textarea type="text" style="height: 10vh;" name="txt_que_buscamos" class="form-control text-center" placeholder="¿Qué buscamos?" maxlength="255" value="Que cada uno de nuestros rescatados..."><?php echo str_replace("\\n", "\n", $landing['que_buscamos']); ?></textarea>
                            </div>
                            <div class="col-xl-6 mb-6">
                               <label style="padding-bottom: 10px; padding-top: 15px;">Atención veterinaria:</label>
-                              <textarea type="text" style="height: 10vh;" name="txt_telefono" class="form-control text-center" placeholder="Atención veterinaria" maxlength="500" value="Ver perros en adopción"></textarea>
+                              <textarea type="text" style="height: 10vh;" name="txt_atencion_veterinaria" class="form-control text-center" placeholder="Atención veterinaria" maxlength="255" value="Nuestros perritos rescatados reciben..."><?php echo str_replace("\\n", "\n", $landing['atencion_veterinaria']); ?></textarea>
                            </div>
                            <div class="col-xl-6 mb-6">
                               <label style="padding-bottom: 10px; padding-top: 15px;">Nuestro sueño:</label>
-                              <textarea type="text" style="height: 10vh;" name="txt_telefono" class="form-control text-center" placeholder="Nuestro sueño" maxlength="500" value="Ver perros en adopción"></textarea>
+                              <textarea type="text" style="height: 10vh;" name="txt_nuestro_suenho" class="form-control text-center" placeholder="Nuestro sueño" maxlength="255" value="Es que algún día no seamos necesarios..."><?php echo str_replace("\\n", "\n", $landing['nuestro_suenho']); ?></textarea>
                            </div>
                            <div class="col-xl-2 mb- offset-3">
-                              <button type="submit" name="btn_actualizar_info_contacto" class="btn login-btn" style="margin-top: 52px;">
+                              <button type="submit" name="btn_actualizar_landing" class="btn login-btn" style="margin-top: 52px;">
                                  Actualizar Landing
                               </button><br>
                            </div>
@@ -762,7 +777,7 @@ Los curamos, les damos atención veterinaria y luego buscamos que sean adoptados
                         </h5>
                         <br>
                         <div class="row" style="padding-left: 30px">
-                        <table class="table table-striped table-bordered" style="text-align: center;">
+                           <table class="table table-striped table-bordered" style="text-align: center;">
                               <thead>
                                  <tr>
                                     <th>Contribución</th>
@@ -774,18 +789,18 @@ Los curamos, les damos atención veterinaria y luego buscamos que sean adoptados
                                  $tablaContribuciones = Contribucion::All();
                                  foreach ($tablaContribuciones as $row => $item) {
                                  ?>
-                                 <tr>
-                                    <td style="vertical-align: middle;">
-                                    <?php echo $item->contribucion ?>
-                                    </td>
-                                    <td style="vertical-align: middle;">
-                                    <a href="EditContribucion.php?action=editar&id=<?php echo $item->id; ?>" type="button" name="btn-" class=""><img src="assets/img/edit.png" alt="edit_button_contribucion" height="35px"></a>
+                                    <tr>
+                                       <td style="vertical-align: middle;">
+                                          <?php echo $item->contribucion ?>
+                                       </td>
+                                       <td style="vertical-align: middle;">
+                                          <a href="EditContribucion.php?action=editar&id=<?php echo $item->id; ?>" type="button" name="btn-" class=""><img src="assets/img/edit.png" alt="edit_button_contribucion" height="35px"></a>
                                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <a href="assets/vendor/php/panel_de_control_crud_contribuciones.php?action=borrar&id=<?php echo $item->id; ?>" onclick="confirm('¿Estas segur@?')" type="submit" class="" name="btnBorrar"><img style="transform: translate(0%, 0%);" src="assets/img/delete.png" alt="delete_button" height="30px"></a>
-                                    </td>
-                                 </tr>
+                                          <a href="assets/vendor/php/panel_de_control_crud_contribuciones.php?action=borrar&id=<?php echo $item->id; ?>" onclick="confirm('¿Estas segur@?')" type="submit" class="" name="btnBorrar"><img style="transform: translate(0%, 0%);" src="assets/img/delete.png" alt="delete_button" height="30px"></a>
+                                       </td>
+                                    </tr>
                                  <?php
-                                    } 
+                                 }
                                  ?>
                               </tbody>
                            </table>
@@ -799,7 +814,7 @@ Los curamos, les damos atención veterinaria y luego buscamos que sean adoptados
                               </button><br>
                            </div>
                         </div>
-                     </div>
+                  </div>
                   </form>
 
                </div>
@@ -817,7 +832,7 @@ Los curamos, les damos atención veterinaria y luego buscamos que sean adoptados
                         </h5>
                         <br>
                         <div class="row" style="padding-left: 30px">
-                        <table class="table table-striped table-bordered" style="text-align: center;">
+                           <table class="table table-striped table-bordered" style="text-align: center;">
                               <thead>
                                  <tr>
                                     <th>Texto</th>
@@ -830,21 +845,21 @@ Los curamos, les damos atención veterinaria y luego buscamos que sean adoptados
                                  $tablaRequisitos = Requisito::All();
                                  foreach ($tablaRequisitos as $row => $item) {
                                  ?>
-                                 <tr>
-                                    <td style="vertical-align: middle;">
-                                    <?php echo $item->texto ?>
-                                    </td>
-                                    <td style="vertical-align: middle;">
-                                    <?php echo $item->subtexto ?>
-                                    </td>
-                                    <td style="vertical-align: middle;">
-                                    <a href="EditRequisito.php?action=editar&id=<?php echo $item->id; ?>" type="button" name="btn-" class=""><img src="assets/img/edit.png" alt="edit_button_requisito" height="35px"></a>
+                                    <tr>
+                                       <td style="vertical-align: middle;">
+                                          <?php echo $item->texto ?>
+                                       </td>
+                                       <td style="vertical-align: middle;">
+                                          <?php echo $item->subtexto ?>
+                                       </td>
+                                       <td style="vertical-align: middle;">
+                                          <a href="EditRequisito.php?action=editar&id=<?php echo $item->id; ?>" type="button" name="btn-" class=""><img src="assets/img/edit.png" alt="edit_button_requisito" height="35px"></a>
                                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <a href="assets/vendor/php/panel_de_control_crud_requisitos.php?action=borrar&id=<?php echo $item->id; ?>" onclick="confirm('¿Estas segur@?')" type="submit" class="" name="btnBorrar"><img style="transform: translate(0%, 10%);" src="assets/img/delete.png" alt="delete_button" height="30px"></a>
-                                    </td>
-                                 </tr>
+                                          <a href="assets/vendor/php/panel_de_control_crud_requisitos.php?action=borrar&id=<?php echo $item->id; ?>" onclick="confirm('¿Estas segur@?')" type="submit" class="" name="btnBorrar"><img style="transform: translate(0%, 10%);" src="assets/img/delete.png" alt="delete_button" height="30px"></a>
+                                       </td>
+                                    </tr>
                                  <?php
-                                    } 
+                                 }
                                  ?>
                               </tbody>
                            </table>
@@ -894,23 +909,23 @@ Los curamos, les damos atención veterinaria y luego buscamos que sean adoptados
                                  $tablaPreguntas = Pregunta::All();
                                  foreach ($tablaPreguntas as $row => $item) {
                                  ?>
-                                 <tr>
-                                    <td scope="row" style="vertical-align: middle;">
-                                    <?php echo $item->id ?>
-                                    </td>
-                                    <td style="vertical-align: middle;">
-                                    <?php echo $item->pregunta ?>
-                                    </td>
-                                    <td style="vertical-align: middle;">
-                                    <?php echo $item->respuesta ?>
-                                    </td>
-                                    <td style="vertical-align: middle;">
-                                    <a href="EditFaq.php?action=editar&id=<?php echo $item->id; ?>" type="button" name="btn-" class=""><img src="assets/img/edit.png" alt="edit_button_faq" height="35px"></a>
-                                    <a href="assets/vendor/php/panel_de_control_crud_preguntas.php?action=borrar&id=<?php echo $item->id; ?>" onclick="confirm('¿Estas segur@?')" type="submit" class="" name="btnBorrar"><img style="transform: translate(0%, 0%);" src="assets/img/delete.png" alt="delete_button" height="30px"></a>
-                                    </td>
-                                 </tr>
+                                    <tr>
+                                       <td scope="row" style="vertical-align: middle;">
+                                          <?php echo $item->id ?>
+                                       </td>
+                                       <td style="vertical-align: middle;">
+                                          <?php echo $item->pregunta ?>
+                                       </td>
+                                       <td style="vertical-align: middle;">
+                                          <?php echo $item->respuesta ?>
+                                       </td>
+                                       <td style="vertical-align: middle;">
+                                          <a href="EditFaq.php?action=editar&id=<?php echo $item->id; ?>" type="button" name="btn-" class=""><img src="assets/img/edit.png" alt="edit_button_faq" height="35px"></a>
+                                          <a href="assets/vendor/php/panel_de_control_crud_preguntas.php?action=borrar&id=<?php echo $item->id; ?>" onclick="confirm('¿Estas segur@?')" type="submit" class="" name="btnBorrar"><img style="transform: translate(0%, 0%);" src="assets/img/delete.png" alt="delete_button" height="30px"></a>
+                                       </td>
+                                    </tr>
                                  <?php
-                                    } 
+                                 }
                                  ?>
                               </tbody>
                            </table>
