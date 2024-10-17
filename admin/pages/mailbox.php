@@ -1,5 +1,6 @@
 <?php
 require_once(__DIR__ . '../../../assets/vendor/php/panel_de_control_auth.php');
+require_once(__DIR__ . '../../../assets/vendor/php/panel_de_control_crud_inbox.php');
 ?>
 
 <!DOCTYPE html>
@@ -132,10 +133,11 @@ require_once(__DIR__ . '../../../assets/vendor/php/panel_de_control_auth.php');
     </section>
 
     <!-- Main content -->
+    <?php $inboxes = Inbox::All(); ?>
     <section class="content">
       <div class="row">
         <div class="col-md-3">
-          <a href="compose.html" class="btn btn-primary btn-block mb-3">Componer</a>
+          <a href="#" class="btn btn-primary btn-block mb-3">Componer</a>
 
           <div class="card">
             <div class="card-header">
@@ -152,7 +154,7 @@ require_once(__DIR__ . '../../../assets/vendor/php/panel_de_control_auth.php');
                 <li class="nav-item active">
                   <a href="#" class="nav-link">
                     <i class="fas fa-inbox"></i> Inbox
-                    <span class="badge bg-primary float-right">12</span>
+                    <span class="badge bg-primary float-right"><?php echo count($inboxes); ?></span>
                   </a>
                 </li>
                 <li class="nav-item">
@@ -180,7 +182,7 @@ require_once(__DIR__ . '../../../assets/vendor/php/panel_de_control_auth.php');
               <div class="mailbox-controls">
                 <!-- Check all button -->
                 <div class="float-right">
-                  52
+                   
                   <div class="btn-group">
                     &nbsp;
                     &nbsp;
@@ -194,24 +196,29 @@ require_once(__DIR__ . '../../../assets/vendor/php/panel_de_control_auth.php');
               <div class="table-responsive mailbox-messages">
                 <table class="table table-hover table-striped">
                   <tbody>
+                    <?php
+                    $c = 1;
+                    foreach ($inboxes  as $key => $item) {
+                      # code...
+                    
+                    ?>
                   <tr>
                     <td>
                       <div class="icheck-primary">
-                        <!-- <input type="checkbox" value="" id="check1"> -->
-                        <label for="check1"></label>
+                        <label for="check<?php echo $c; ?>"></label>
                       </div>
                     </td>
                     <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
-                    <td class="mailbox-name"><a href="read-mail.html">Roberto</a></td>
-                    <td class="mailbox-subject"><b>Asunto 1</b> - Buscando...
+                    <td class="mailbox-subject"><b><a href="#"><?php echo $item->asunto; ?></a></b>
+                    <td class="mailbox-name"><?php echo $item->correo; ?></td>
                     </td>
                     <td class="mailbox-attachment"></td>
-                    <td class="mailbox-date">5 mins ago</td>
+                    <td class="mailbox-date"><?php echo tiempo_transcurrido($item->fecha); ?></td>
                   </tr>
-                  <tr>
+                  <?php $c++;} ?>
+                  <!-- <tr>
                     <td>
                       <div class="icheck-primary">
-                        <!-- <input type="checkbox" value="" id="check2"> -->
                         <label for="check2"></label>
                       </div>
                     </td>
@@ -225,7 +232,6 @@ require_once(__DIR__ . '../../../assets/vendor/php/panel_de_control_auth.php');
                   <tr>
                     <td>
                       <div class="icheck-primary">
-                        <!-- <input type="checkbox" value="" id="check3"> -->
                         <label for="check3"></label>
                       </div>
                     </td>
@@ -239,7 +245,6 @@ require_once(__DIR__ . '../../../assets/vendor/php/panel_de_control_auth.php');
                   <tr>
                     <td>
                       <div class="icheck-primary">
-                        <!-- <input type="checkbox" value="" id="check4"> -->
                         <label for="check4"></label>
                       </div>
                     </td>
@@ -253,7 +258,6 @@ require_once(__DIR__ . '../../../assets/vendor/php/panel_de_control_auth.php');
                   <tr>
                     <td>
                       <div class="icheck-primary">
-                        <!-- <input type="checkbox" value="" id="check5"> -->
                         <label for="check5"></label>
                       </div>
                     </td>
@@ -263,7 +267,7 @@ require_once(__DIR__ . '../../../assets/vendor/php/panel_de_control_auth.php');
                     </td>
                     <td class="mailbox-attachment"><i class="fas fa-paperclip"></i></td>
                     <td class="mailbox-date">Yesterday</td>
-                  </tr>
+                  </tr> -->
                   
                   </tbody>
                 </table>
