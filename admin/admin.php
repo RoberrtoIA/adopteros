@@ -103,15 +103,15 @@ require_once(__DIR__ . '../../assets/vendor/php/panel_de_control_auth.php');
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="pages/mailbox.php" class="nav-link">
+          <!-- <li class="nav-item">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 eMail
                 <span class="right badge badge-danger">En construcción</span>
               </p>
             </a>
-          </li>
+          </li> -->
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

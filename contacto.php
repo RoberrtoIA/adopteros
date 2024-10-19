@@ -1,8 +1,6 @@
 <?php
 require_once('assets/Connection/database.php');
 require_once('assets/Model/informacion_contacto.php');
-require_once('assets/vendor/php/panel_de_control_crud_contacto_inbox.php');
-
 ?>
 
 <!DOCTYPE html>
@@ -31,6 +29,9 @@ require_once('assets/vendor/php/panel_de_control_crud_contacto_inbox.php');
    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
+<?php
+   $info = InformacionContacto::GetAll();
+   ?>
 <body>
    <!-- Header -->
    <header id="header" class="fixed-top d-flex align-items-center">
@@ -82,29 +83,21 @@ require_once('assets/vendor/php/panel_de_control_crud_contacto_inbox.php');
                <div class="row">
 
                   <div class="col-6" data-aos="fade-up">
+                     <br>
                      <h3>Contacto</h3>
                      <div class="text-line" style="width: 230px;"></div>
                      <br>
-                     <form action="" method="POST">
                         <div class="mb-3">
-                           <label for="exampleInputEmail1" class="form-label">Correo electrónico:</label>
-                           <input type="email" maxlength="255" name="correo" class="form-control" placeholder="Ingrese el correo en el que desea recibir su respuesta..." id="txtMail" aria-describedby="emailHelp" required>
+                           <label for="email" class="form-label">Si tienes alguna duda puedes ponerte en contacto nosotros a través de siguiente correo!</label>
+                           <label for="Email" class="form-label"><h4><b><?= $info['email']; ?></b></h4></label>
                         </div>
                         <div class="mb-3">
-                           <label for="Asunto" class="form-label">Asunto:</label>
-                           <input type="text" maxlength="100" name="asunto" class="form-control" placeholder="Ingrese una breve descripción de su mensaje..." id="txtAsunto" aria-describedby="asuntoEntry" required>
+                        <label for="email" class="form-label">Ó llamanos al siguiente numero:</label>
+                        <label for="Telefono" class="form-label"><h4><b><?= $info['telefono_upfoter']; ?></b></h4></label>
                         </div>
-                        <div class="mb-1">
-                           <label for="Message" class="form-label">Mensaje:</label>
-                           <textarea class="form-control" maxlength="5000" name="mensaje" id="txtMensaje" placeholder="Ingrese su mensaje aquí..." rows="3" required></textarea>
+                        <div class="mb-3">
+                        <label for="perro" class="form-label"><i>Encuentra ya a tu futuro compañero!</i></label>
                         </div>
-                        <div class="mb-1">
-                           <button type="submit" name="btn_registrar_inbox" class="btn login-btn">Enviar correo</button>
-                        </div>
-                     </form>
-                     <?php
-                     // require_once("assets/vendor/php/correo.php");
-                     ?>
                   </div>
 
                   <div class="col-6">
@@ -115,10 +108,6 @@ require_once('assets/vendor/php/panel_de_control_crud_contacto_inbox.php');
          </div>
       </section>
    </main>
-
-   <?php
-   $info = InformacionContacto::GetAll();
-   ?>
 
    <!-- Footer -->
    <footer id="footer">
