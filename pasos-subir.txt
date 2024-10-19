@@ -25,3 +25,5 @@ Agregar contacto.php
 Agregar assets/Model/pregunta.php
 
 Agregar assets/vendor/php/panel_de_control_crud_preguntas.php
+
+editar style.css y inicio.php (htaccess)

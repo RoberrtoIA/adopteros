@@ -5,8 +5,12 @@
    require_once('assets/Model/requisito.php');
    require_once('assets/Model/contribucion.php');
    require_once('assets/Model/landing.php');
+   require_once('assets/Model/imagen.php');
 ?>
 
+<?php
+$imagenes = Imagen::Get();
+?>
 <!DOCTYPE html>
 <html lang="es">
    <head>
@@ -58,12 +62,37 @@
             </nav>
             <a href="donar.php" class="get-started-btn">Donar</a>
          </div>
+         <?php
+         $landing = Landing::GetAll();
+         ?>
+
+         <?php
+         echo '<style>
+         #hero {
+         width: 100%;
+         height: 100vh;
+         background: url("' . $imagenes[0]->landing_img . '") top center no-repeat;
+         background-size: cover;
+         position: relative;
+         padding-top: 82px;
+         }
+         </style>';
+         ?>
+
+         <!-- <style>
+            #hero {
+  width: 100%;
+  height: 100vh;
+  background: url("../img/hero-bg.jpg") top center no-repeat;
+  background-size: cover;
+  position: relative;
+  padding-top: 82px;
+}
+         </style> -->
       </header>
 
       <!-- Hero Section -->
-      <?php
-         $landing = Landing::GetAll();
-      ?>
+      
       <section id="hero" class="d-flex align-items-center">
          <div class="container" data-aos="zoom-out" data-aos-delay="100">
             <div class="row">

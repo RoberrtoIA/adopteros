@@ -12,6 +12,7 @@ require_once('assets/vendor/php/panel_de_control_crud_preguntas.php');
 require_once('assets/vendor/php/panel_de_control_crud_requisitos.php');
 require_once('assets/vendor/php/panel_de_control_crud_contribuciones.php');
 require_once('assets/vendor/php/panel_de_control_landing.php');
+require_once('assets/vendor/php/panel_de_control_imagen.php');
 
 ?>
 
@@ -279,6 +280,13 @@ require_once('assets/vendor/php/panel_de_control_landing.php');
                <li class="nav-item col-3" style="margin-top:16px">
                   <a class="nav-link" id="a5" data-bs-toggle="tab" data-bs-target="#gestion_faq">
                      <h4 class="d-none d-lg-block">FAQ</h4>
+                  </a>
+               </li>
+
+               <!-- 11. Gestión - Imagenes -->
+               <li class="nav-item col-3" style="margin-top:16px">
+                  <a class="nav-link" id="a5" data-bs-toggle="tab" data-bs-target="#gestion_imagenes">
+                     <h4 class="d-none d-lg-block">Imagenes</h4>
                   </a>
                </li>
             </ul>
@@ -948,6 +956,50 @@ require_once('assets/vendor/php/panel_de_control_landing.php');
 
                </div>
 
+
+               <!-- 11. Gestión - Imagenes -->
+
+               <?php
+               $imagenes = Imagen::Get();
+               // var_dump($imagenes[0]->id);
+               ?>
+
+               <div class="tab-pane" id="gestion_imagenes">
+                  <div class="container" style="padding-top: 40px; padding-bottom: 20px;">
+
+                     <form class="shadow p-3 mb-5 bg-white rounded" action="" method="POST" style="padding: 30px 30px;">
+                        <h5 style="margin-top:-16px; margin-left: -16px; margin-right: -16px;
+                              padding-bottom:15px; padding-top: 15px; padding-left:30px; 
+                              background-color: #1b1b1b; color:white;">
+                           Control de imagenes de la página principal
+                        </h5>
+                        <br>
+                        <div class="row" style="padding-left: 30px">
+                           <div class="col-xl-12 mb-12">
+                              <label style="padding-bottom: 10px;">Fondo Landing:</label>
+                              <input type="file" class="form-control-file" name="landing_img">
+                              <br>
+                              <br>
+                              <img src="<?= $imagenes[0]->landing_img; ?>" height="500px" alt="landing_img">
+                           </div>
+                           <div class="col-xl-12 mb-12" style="margin-top: 2vh;">
+                              <label style="padding-bottom: 10px;">"¿Cómo contribuir?":</label>
+                              <input type="file" class="form-control-file" name="landing_img">
+                              <br>
+                              <br>
+                              <img src="<?= $imagenes[0]->contribuir_img; ?>" height="500px" alt="contribucion_img">
+                           </div>
+                           <div class="offset-10 col-xl-2 mb-2">
+                              <button type="submit" name="btn_actualizar_imagenes" class="btn login-btn" style="margin-top: 32px;">
+                           Actualizar datos
+                              </button><br>
+                           </div>
+                        </div>
+                     </form>
+
+                  </div>
+               </div>
+
             </div>
          </div>
          </div>
@@ -1118,6 +1170,26 @@ require_once('assets/vendor/php/panel_de_control_landing.php');
          // activarTab("gestion_donacion", "gestion_perros_adopcion");
       }, false);
    </script>
+   <script>
+   // Función que se ejecuta cuando el "botón" es clicado
+   document.getElementById('my-button').addEventListener('click', function() {
+      // Obtener todas las pestañas activas
+      var allTabs = document.querySelectorAll('.nav-link');
+      
+      // Eliminar la clase "active" de todas las pestañas
+      allTabs.forEach(function(tab) {
+         tab.classList.remove('active', 'show');
+      });
+
+      // Activar la pestaña que queremos (en este caso, la primera)
+      var tabToActivate = document.getElementById('a1'); // ID de la pestaña a activar
+      var tabContent = new bootstrap.Tab(tabToActivate); // Inicializa la pestaña con Bootstrap
+      tabContent.show(); // Muestra la pestaña seleccionada
+
+      // Añadir la clase "active" manualmente a la pestaña seleccionada
+      tabToActivate.classList.add('active', 'show');
+   });
+</script>
    <script src="assets/vendor/aos/aos.js"></script>
    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
