@@ -101,6 +101,15 @@ require_once('assets/vendor/php/panel_de_control_imagen.php');
                      </script>";
    }
 
+   # Imagen actualizada con exito
+   if ($img_editada_con_exito == true) {
+      echo "<script> Swal.fire({icon:'success',               
+                       title:'Listo!',                
+                       text:'Imagen actualizada con exito',                
+                       confirmButtonText: 'Continuar', confirmButtonColor: '#1a8e32',});              
+                     </script>";
+   }
+
    # Requisito registrado con exito
    if ($requisito_registrado_con_exito == true) {
       echo "<script> Swal.fire({icon:'success',               
@@ -967,7 +976,7 @@ require_once('assets/vendor/php/panel_de_control_imagen.php');
                <div class="tab-pane" id="gestion_imagenes">
                   <div class="container" style="padding-top: 40px; padding-bottom: 20px;">
 
-                     <form class="shadow p-3 mb-5 bg-white rounded" action="" method="POST" style="padding: 30px 30px;">
+                     <form class="shadow p-3 mb-5 bg-white rounded" action="" method="POST" enctype="multipart/form-data" style="padding: 30px 30px;">
                         <h5 style="margin-top:-16px; margin-left: -16px; margin-right: -16px;
                               padding-bottom:15px; padding-top: 15px; padding-left:30px; 
                               background-color: #1b1b1b; color:white;">
@@ -975,23 +984,28 @@ require_once('assets/vendor/php/panel_de_control_imagen.php');
                         </h5>
                         <br>
                         <div class="row" style="padding-left: 30px">
-                           <div class="col-xl-12 mb-12">
+                           <div class="col-xl-10 mb-10">
                               <label style="padding-bottom: 10px;">Fondo Landing:</label>
                               <input type="file" class="form-control-file" name="landing_img">
                               <br>
                               <br>
                               <img src="<?= $imagenes[0]->landing_img; ?>" height="500px" alt="landing_img">
                            </div>
+                           <div class="offset-5 col-xl-2 mb-2">
+                              <button type="submit" name="btn_actualizar_imagen_landing" class="btn login-btn" style="margin-top: 32px;">
+                           Actualizar fondo Landing
+                              </button><br>
+                           </div>
                            <div class="col-xl-12 mb-12" style="margin-top: 2vh;">
                               <label style="padding-bottom: 10px;">"¿Cómo contribuir?":</label>
-                              <input type="file" class="form-control-file" name="landing_img">
+                              <input type="file" class="form-control-file" name="contribuir_img">
                               <br>
                               <br>
-                              <img src="<?= $imagenes[0]->contribuir_img; ?>" height="500px" alt="contribucion_img">
+                              <img src="<?= $imagenes[0]->contribuir_img; ?>" height="500px" alt="contribuir_img">
                            </div>
-                           <div class="offset-10 col-xl-2 mb-2">
-                              <button type="submit" name="btn_actualizar_imagenes" class="btn login-btn" style="margin-top: 32px;">
-                           Actualizar datos
+                           <div class="offset-5 col-xl-2 mb-2">
+                              <button type="submit" name="btn_actualizar_imagen_contribucion" class="btn login-btn" style="margin-top: 32px;">
+                           Actualizar foto contribucion
                               </button><br>
                            </div>
                         </div>

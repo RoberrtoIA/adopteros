@@ -30,11 +30,28 @@ class Imagen
         return $imagenes;
     }
 
-    public static function Update($landing_img, $contribuir_img)
+    public static function UpdateLanding($landing_img)
     {
         $conexion = DB::CrearInstancia();
-        $sql = $conexion->prepare("CALL imagenes_update(?,?)");
-        $sql->execute(array($landing_img, $contribuir_img));
+        $sql = $conexion->prepare("CALL imagenes_update_landing(?)");
+        $sql->execute(array($landing_img));
         $conexion = null;
-    }    
+    }   
+    
+    public static function UpdateContribuir($contribuir_img)
+    {
+        $conexion = DB::CrearInstancia();
+        $sql = $conexion->prepare("CALL imagenes_update_contribuir(?)");
+        $sql->execute(array($contribuir_img));
+        $conexion = null;
+    } 
+
+
+    // public static function Update($landing_img, $contribuir_img)
+    // {
+    //     $conexion = DB::CrearInstancia();
+    //     $sql = $conexion->prepare("CALL imagenes_update(?,?)");
+    //     $sql->execute(array($landing_img, $contribuir_img));
+    //     $conexion = null;
+    // } 
 }

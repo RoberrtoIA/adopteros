@@ -212,7 +212,7 @@ $imagenes = Imagen::Get();
                         </div>
 
                         <div class="col-lg-5 offset-1 order-1 order-lg-2 text-center" data-aos="fade-up" data-aos-delay="200"> 
-                           <img src="assets/img/img-1.png" class="img-fluid rounded"> 
+                           <img src="<?= $imagenes[0]->contribuir_img; ?>" class="img-fluid rounded"> 
                         </div>
                      </div>
                   </div>

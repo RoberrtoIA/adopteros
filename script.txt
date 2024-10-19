@@ -241,18 +241,30 @@ INSERT INTO imagenes (id, landing_img, contribuir_img)
 VALUES (1, "assets/img/hero-bg.jpg", "assets/img/img-1.png");
 
 
+
 DELIMITER //
-CREATE PROCEDURE `imagenes_update`(
-	IN _landing_img VARCHAR(255), 
+CREATE PROCEDURE `imagenes_update_landing`(
+	IN _landing_img VARCHAR(255)
+)
+BEGIN  
+    UPDATE imagenes
+    SET 
+	 landing_img = _landing_img
+    WHERE id = 1;
+END//
+DELIMITER ;
+
+
+
+DELIMITER //
+CREATE PROCEDURE `imagenes_update_contribuir`(
 	IN _contribuir_img VARCHAR(255)
 )
 BEGIN  
     UPDATE imagenes
     SET 
-	 landing_img = _landing_img, 
-    contribuir_img = _contribuir_img
+	 contribuir_img = _contribuir_img
     WHERE id = 1;
 END//
 DELIMITER ;
-
 
