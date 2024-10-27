@@ -1097,7 +1097,6 @@ require_once('assets/vendor/php/panel_de_control_imagen.php');
 
 
    <!-- Modal -->
-   <?php require_once('assets/modals/add-faq.html'); ?>
    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg modal-dialog-centered">
          <div class="modal-content" style="height: 80px; margin-bottom: 40%;">
